@@ -1,0 +1,272 @@
+.session-music {
+  width: min(780px, 100%);
+  margin: 0 auto;
+  padding: 17px;
+  border: 1px solid rgba(214, 215, 239, 0.11);
+  border-radius: 15px;
+  background: rgba(22, 23, 34, 0.8);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.025);
+  color: #efedf5;
+  font-family: Inter, "Segoe UI", sans-serif;
+}
+
+.session-music *,
+.session-music *::before,
+.session-music *::after {
+  box-sizing: border-box;
+}
+
+.session-music__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 13px;
+}
+
+.session-music__header span,
+.session-music__recent > span {
+  color: #9c95ae;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.session-music__header h2 {
+  margin: 4px 0 0;
+  color: #f0edf5;
+  font-size: 15px;
+  font-weight: 580;
+}
+
+.session-music__header > button {
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgba(212, 213, 236, 0.12);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.035);
+  color: #d9d7e2;
+  font-size: 17px;
+  cursor: pointer;
+}
+
+.session-music__choices {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.session-music__choices button {
+  display: grid;
+  min-height: 85px;
+  grid-template-columns: 27px minmax(0, 1fr);
+  align-content: center;
+  align-items: center;
+  gap: 5px 8px;
+  padding: 12px;
+  border: 1px solid rgba(212, 213, 236, 0.1);
+  border-radius: 11px;
+  background: rgba(255, 255, 255, 0.025);
+  color: #e4e0eb;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 150ms ease, background 150ms ease, transform 150ms ease;
+}
+
+.session-music__choices button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  border-color: rgba(186, 178, 228, 0.25);
+  background: rgba(134, 128, 189, 0.09);
+}
+
+.session-music__choices button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.session-music__choices button > span {
+  grid-row: span 2;
+  color: #c3bbdd;
+  font-size: 18px;
+}
+
+.session-music__choices strong {
+  font-size: 9px;
+  font-weight: 630;
+}
+
+.session-music__choices small {
+  overflow: hidden;
+  color: #9994a4;
+  font-size: 7px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.session-music__back {
+  margin-bottom: 11px;
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  color: #bbb3cc;
+  font: inherit;
+  font-size: 8px;
+  cursor: pointer;
+}
+
+.session-music__search {
+  display: flex;
+  gap: 7px;
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 1px solid rgba(212, 213, 236, 0.13);
+  border-radius: 10px;
+  background: rgba(6, 7, 12, 0.42);
+}
+
+.session-music__search input {
+  width: 100%;
+  min-width: 0;
+  height: 31px;
+  padding: 0 8px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #f0edf5;
+  font: inherit;
+  font-size: 9px;
+}
+
+.session-music__search input::placeholder {
+  color: #777382;
+}
+
+.session-music__search button,
+.session-music__playlist > button,
+.session-music__select {
+  padding: 0 11px;
+  border: 1px solid rgba(196, 188, 229, 0.18);
+  border-radius: 8px;
+  background: rgba(132, 128, 190, 0.12);
+  color: #e7e2f2;
+  font: inherit;
+  font-size: 8px;
+  cursor: pointer;
+}
+
+.session-music__search button:disabled {
+  opacity: 0.45;
+  cursor: wait;
+}
+
+.session-music__song,
+.session-music__playlist {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 3px;
+  border-bottom: 1px solid rgba(212, 213, 236, 0.055);
+}
+
+.session-music__song > img,
+.session-music__playlist > img {
+  width: 39px;
+  height: 39px;
+  flex: 0 0 auto;
+  border: 1px solid rgba(212, 213, 236, 0.1);
+  border-radius: 7px;
+  object-fit: cover;
+}
+
+.session-music__song > div,
+.session-music__playlist > div {
+  display: grid;
+  min-width: 0;
+  flex: 1;
+  gap: 3px;
+}
+
+.session-music__song strong,
+.session-music__playlist strong {
+  overflow: hidden;
+  color: #e5e1eb;
+  font-size: 8px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.session-music__song span,
+.session-music__song small,
+.session-music__playlist span {
+  overflow: hidden;
+  color: #9b96a5;
+  font-size: 7px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.session-music__song > button:not(.session-music__select) {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(212, 213, 236, 0.1);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.025);
+  color: #d8d2e5;
+  font-size: 8px;
+  cursor: pointer;
+}
+
+.session-music__select,
+.session-music__playlist > button {
+  min-height: 29px;
+}
+
+.session-music__recent {
+  display: grid;
+  gap: 1px;
+  margin-top: 15px;
+}
+
+.session-music__recent > span {
+  margin-bottom: 5px;
+}
+
+.session-music__empty,
+.session-music__error {
+  margin: 10px 0 0;
+  padding: 12px;
+  border: 1px dashed rgba(212, 213, 236, 0.12);
+  border-radius: 9px;
+  color: #a7a1b1;
+  font-size: 8px;
+  line-height: 1.6;
+}
+
+.session-music__error {
+  border-color: rgba(225, 137, 129, 0.24);
+  color: #e6b6b0;
+}
+
+@media (max-width: 520px) {
+  .session-music {
+    padding: 12px;
+  }
+
+  .session-music__choices {
+    grid-template-columns: 1fr;
+  }
+
+  .session-music__choices button {
+    min-height: 68px;
+  }
+
+  .session-music__song,
+  .session-music__playlist {
+    gap: 6px;
+  }
+}

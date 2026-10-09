@@ -1,0 +1,997 @@
+.modal-overlay.feature-journey-overlay {
+  align-items: stretch;
+  padding: 0;
+  background: rgba(5, 5, 10, 0.96);
+}
+
+.modal-card.feature-journey-dialog {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  padding: 0;
+  overflow-y: auto;
+  border: 0;
+  border-radius: 0;
+  background: #0d0d14;
+}
+
+.modal-card.feature-journey-dialog > .modal-close-btn {
+  position: fixed;
+  z-index: 20;
+  top: 15px;
+  right: max(18px, calc((100vw - 1240px) / 2));
+  border: 1px solid rgba(218, 223, 248, 0.16);
+  background: rgba(17, 20, 30, 0.86);
+  color: #f3f1f7;
+}
+
+.emotion-journey {
+  --journey-surface: rgba(255, 255, 255, 0.045);
+  --journey-border: rgba(255, 255, 255, 0.09);
+  --journey-muted: #a1a0ad;
+  --journey-accent: var(--journey-mood, #b49aff);
+  min-height: 100%;
+  padding: 46px max(20px, calc((100vw - 1160px) / 2)) 64px;
+  color: #f5f3f8;
+  background:
+    radial-gradient(ellipse at 84% 2%, color-mix(in srgb, var(--journey-accent) 20%, transparent), transparent 30%),
+    radial-gradient(ellipse at 5% 52%, color-mix(in srgb, var(--journey-accent) 9%, transparent), transparent 28%),
+    #0d0d14;
+  transition: background 400ms ease;
+}
+
+.emotion-journey *,
+.emotion-journey *::before,
+.emotion-journey *::after {
+  box-sizing: border-box;
+}
+
+.emotion-journey__hero {
+  display: flex;
+  max-width: 1160px;
+  min-height: 165px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 0 auto 20px;
+  padding: 8px 0;
+}
+
+.emotion-journey--sad {
+  background-position: 10% 0%, 100% 65%, center;
+}
+
+.emotion-journey--lonely {
+  background-position: 100% 2%, 0% 80%, center;
+}
+
+.emotion-journey--stressed {
+  background-position: 76% 0%, 18% 45%, center;
+}
+
+.emotion-journey--calm,
+.emotion-journey--relaxed {
+  background-position: 72% 0%, 12% 78%, center;
+}
+
+.emotion-journey--romantic {
+  background-position: 95% 3%, 9% 32%, center;
+}
+
+.emotion-journey--happy,
+.emotion-journey--hopeful {
+  background-position: 62% 0%, 4% 45%, center;
+}
+
+.emotion-journey--energetic,
+.emotion-journey--motivated {
+  background-position: 100% 3%, 0% 20%, center;
+}
+
+.emotion-journey__hero-copy {
+  max-width: 750px;
+}
+
+.emotion-journey__eyebrow,
+.emotion-journey__section-title > div > span,
+.emotion-journey__collection-header > div > span,
+.emotion-journey__next > div > span,
+.emotion-journey__journey-actions > div > span {
+  color: var(--journey-accent);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.emotion-journey__hero h1 {
+  margin: 10px 0 7px;
+  color: #faf8fc;
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 650;
+  letter-spacing: -0.055em;
+}
+
+.emotion-journey__hero-copy > p {
+  margin: 0;
+  color: #afadb9;
+  font-size: 13px;
+}
+
+.emotion-journey__mood-orb {
+  display: grid;
+  width: 120px;
+  height: 120px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--journey-accent) 40%, transparent);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 28%, color-mix(in srgb, var(--journey-accent) 33%, transparent), rgba(255, 255, 255, 0.025) 68%);
+  box-shadow: 0 0 60px color-mix(in srgb, var(--journey-accent) 15%, transparent), inset 0 0 26px rgba(255, 255, 255, 0.035);
+  animation: emotion-orb-in 550ms ease both;
+}
+
+.emotion-journey__mood-orb span {
+  font-size: 48px;
+}
+
+@keyframes emotion-orb-in {
+  from { opacity: 0; transform: scale(0.86) rotate(-8deg); }
+  to { opacity: 1; transform: scale(1) rotate(0); }
+}
+
+.emotion-journey__now-playing {
+  display: flex;
+  width: min(100%, 400px);
+  align-items: center;
+  gap: 10px;
+  margin-top: 17px;
+  padding: 8px 10px;
+  border: 1px solid var(--journey-border);
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.emotion-journey__now-playing img {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.emotion-journey__now-playing > span {
+  display: grid;
+  min-width: 0;
+  flex: 1;
+  gap: 2px;
+}
+
+.emotion-journey__now-playing small,
+.emotion-journey__now-playing em {
+  color: var(--journey-muted);
+  font-size: 8px;
+  font-style: normal;
+}
+
+.emotion-journey__now-playing strong {
+  overflow: hidden;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.emotion-journey__now-playing button,
+.emotion-journey__song button,
+.emotion-journey__load-more button,
+.emotion-journey__empty-results button,
+.emotion-journey__journey-actions > button,
+.emotion-journey__summary button {
+  border: 1px solid var(--journey-border);
+  border-radius: 9px;
+  background: rgba(255, 255, 255, 0.07);
+  color: #f7f5fa;
+  font: inherit;
+  cursor: pointer;
+}
+
+.emotion-journey__now-playing button {
+  width: 32px;
+  height: 32px;
+}
+
+.emotion-journey__mood-picker,
+.emotion-journey__journey-card,
+.emotion-journey__collection,
+.emotion-journey__next,
+.emotion-journey__tools,
+.emotion-journey__saved,
+.emotion-journey__welcome,
+.emotion-journey__summary {
+  max-width: 1160px;
+  margin: 0 auto 15px;
+  padding: 18px;
+  border: 1px solid var(--journey-border);
+  border-radius: 17px;
+  background: linear-gradient(145deg, rgba(26, 26, 37, 0.83), rgba(17, 17, 25, 0.88));
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.025), 0 14px 40px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(16px);
+}
+
+.emotion-journey__section-title,
+.emotion-journey__collection-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.emotion-journey__section-title h2,
+.emotion-journey__collection-header h2,
+.emotion-journey__next h2,
+.emotion-journey__journey-actions h2 {
+  margin: 5px 0 0;
+  color: #f3f1f7;
+  font-size: 16px;
+  font-weight: 620;
+  letter-spacing: -0.025em;
+}
+
+.emotion-journey__current-pill,
+.emotion-journey__section-title > span {
+  color: var(--journey-muted);
+  font-size: 10px;
+}
+
+.emotion-journey__moods {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.emotion-journey__mood {
+  display: flex;
+  min-height: 57px;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 9px;
+  padding: 9px 11px;
+  border: 1px solid var(--journey-border);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.16);
+  color: #f2f0f6;
+  font: inherit;
+  cursor: pointer;
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.emotion-journey__mood:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--mood-color) 65%, transparent);
+}
+
+.emotion-journey__mood.is-selected {
+  border-color: color-mix(in srgb, var(--mood-color) 72%, transparent);
+  background: color-mix(in srgb, var(--mood-color) 17%, rgba(255, 255, 255, 0.025));
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--mood-color) 15%, transparent);
+}
+
+.emotion-journey__mood > span {
+  font-size: 21px;
+}
+
+.emotion-journey__mood strong {
+  font-size: 11px;
+  font-weight: 580;
+}
+
+.emotion-journey__welcome {
+  padding: 32px 20px;
+  text-align: center;
+}
+
+.emotion-journey__welcome > span {
+  color: var(--journey-accent);
+  font-size: 28px;
+}
+
+.emotion-journey__welcome h2 {
+  margin: 8px 0;
+  font-size: 19px;
+}
+
+.emotion-journey__welcome > p,
+.emotion-journey__next p,
+.emotion-journey__journey-actions p {
+  margin: 0;
+  color: var(--journey-muted);
+  font-size: 11px;
+}
+
+.emotion-journey__journey-card {
+  padding-bottom: 15px;
+}
+
+.emotion-journey__text-button {
+  border: 0;
+  background: transparent;
+  color: var(--journey-muted);
+  font: inherit;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.emotion-journey__timeline {
+  display: flex;
+  align-items: stretch;
+  gap: 9px;
+  overflow-x: auto;
+  padding: 3px 0 8px;
+}
+
+.emotion-journey__stage {
+  display: grid;
+  min-width: 132px;
+  justify-items: start;
+  gap: 4px;
+  padding: 11px;
+  border: 1px solid color-mix(in srgb, var(--mood-color) 24%, transparent);
+  border-radius: 13px;
+  background: color-mix(in srgb, var(--mood-color) 7%, rgba(255, 255, 255, 0.025));
+  color: #f3f1f7;
+  text-align: left;
+  cursor: pointer;
+}
+
+.emotion-journey__stage.is-current {
+  border-color: var(--mood-color);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--mood-color) 12%, transparent);
+}
+
+.emotion-journey__stage > span {
+  font-size: 20px;
+}
+
+.emotion-journey__stage strong {
+  font-size: 12px;
+}
+
+.emotion-journey__stage small {
+  max-width: 160px;
+  overflow: hidden;
+  color: #aaa8b4;
+  font-size: 8px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.emotion-journey__timeline-arrow {
+  align-self: center;
+  color: var(--journey-muted);
+}
+
+.emotion-journey__stage-message {
+  margin: 7px 0 0;
+  color: var(--journey-muted);
+  font-size: 10px;
+}
+
+.emotion-journey__stage-message strong {
+  color: var(--journey-accent);
+}
+
+.emotion-journey__collection {
+  padding: 20px;
+}
+
+.emotion-journey__transition {
+  display: grid;
+  gap: 4px;
+  margin: 0 0 14px;
+  padding: 11px 13px;
+  border: 1px solid color-mix(in srgb, var(--journey-accent) 28%, transparent);
+  border-radius: 11px;
+  background: color-mix(in srgb, var(--journey-accent) 7%, rgba(0, 0, 0, 0.2));
+}
+
+.emotion-journey__transition > span {
+  color: var(--journey-accent);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.emotion-journey__transition strong {
+  color: #f4f1f8;
+  font-size: 11px;
+}
+
+.emotion-journey__transition i {
+  padding: 0 5px;
+  color: var(--journey-accent);
+  font-style: normal;
+}
+
+.emotion-journey__transition p {
+  margin: 0;
+  color: var(--journey-muted);
+  font-size: 9px;
+}
+
+.emotion-journey__collection-header {
+  margin-bottom: 16px;
+}
+
+.emotion-journey__collection-header p {
+  margin: 6px 0 0;
+  color: var(--journey-muted);
+  font-size: 10px;
+}
+
+.emotion-journey__collection-mood {
+  display: grid;
+  width: 43px;
+  height: 43px;
+  place-items: center;
+  border-radius: 13px;
+  background: color-mix(in srgb, var(--journey-accent) 15%, transparent);
+  font-size: 24px;
+}
+
+.emotion-journey__categories {
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  margin-bottom: 12px;
+  padding-bottom: 4px;
+}
+
+.emotion-journey__categories button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 0 auto;
+  padding: 8px 11px;
+  border: 1px solid var(--journey-border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+  color: #bcbac6;
+  font: inherit;
+  font-size: 9px;
+  cursor: pointer;
+}
+
+.emotion-journey__categories button.is-active {
+  border-color: color-mix(in srgb, var(--journey-accent) 56%, transparent);
+  background: color-mix(in srgb, var(--journey-accent) 14%, transparent);
+  color: #f8f5fb;
+}
+
+.emotion-journey__categories small {
+  color: var(--journey-muted);
+}
+
+.emotion-journey__songs {
+  display: grid;
+  gap: 5px;
+}
+
+.emotion-journey__song {
+  display: grid;
+  min-width: 0;
+  grid-template-columns: 23px 44px minmax(0, 1fr) 31px 31px minmax(82px, auto) auto 27px;
+  align-items: center;
+  gap: 9px;
+  padding: 7px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.16);
+  transition: border-color 160ms ease, background 160ms ease;
+}
+
+.emotion-journey__song:hover {
+  border-color: var(--journey-border);
+  background: rgba(255, 255, 255, 0.045);
+}
+
+.emotion-journey__song-rank {
+  color: #777582;
+  font-size: 9px;
+  text-align: center;
+}
+
+.emotion-journey__song > img {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.emotion-journey__song-info {
+  display: grid;
+  min-width: 0;
+  gap: 2px;
+}
+
+.emotion-journey__song-info strong,
+.emotion-journey__song-info small,
+.emotion-journey__song-info > span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.emotion-journey__song-info strong {
+  color: #f0eef4;
+  font-size: 10px;
+}
+
+.emotion-journey__song-info small,
+.emotion-journey__song-info > span {
+  color: var(--journey-muted);
+  font-size: 8px;
+}
+
+.emotion-journey__song-info .emotion-journey__match-score {
+  color: var(--journey-accent);
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.emotion-journey__song .emotion-journey__play {
+  width: 29px;
+  height: 29px;
+  color: var(--journey-accent);
+}
+
+.emotion-journey__song .emotion-journey__icon-action,
+.emotion-journey__song .emotion-journey__favorite-stage {
+  width: 28px;
+  height: 28px;
+  color: #aaa8b5;
+}
+
+.emotion-journey__song .emotion-journey__icon-action.is-favorite,
+.emotion-journey__song .emotion-journey__favorite-stage {
+  color: #f0b4cf;
+}
+
+.emotion-journey__playlist-action {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 29px;
+  padding: 0 8px;
+  border: 1px solid var(--journey-border);
+  border-radius: 8px;
+  color: #d3d0db;
+  font-size: 8px;
+}
+
+.emotion-journey__playlist-action select {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.emotion-journey__playlist-action:focus-within {
+  outline: 1px solid var(--journey-accent);
+}
+
+.emotion-journey__playlist-action select option {
+  background: #181821;
+  color: #fff;
+}
+
+.emotion-journey__song .emotion-journey__add-journey {
+  min-height: 29px;
+  padding: 0 8px;
+  color: #d3d0db;
+  font-size: 8px;
+  white-space: nowrap;
+}
+
+.emotion-journey__song .emotion-journey__add-journey.is-added {
+  border-color: color-mix(in srgb, var(--journey-accent) 55%, transparent);
+  color: var(--journey-accent);
+}
+
+.emotion-journey__load-more {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 12px;
+  color: var(--journey-muted);
+  font-size: 9px;
+}
+
+.emotion-journey__load-more button,
+.emotion-journey__empty-results button {
+  padding: 8px 12px;
+  border-color: color-mix(in srgb, var(--journey-accent) 44%, transparent);
+  background: color-mix(in srgb, var(--journey-accent) 13%, transparent);
+  font-size: 9px;
+}
+
+.emotion-journey__disclaimer {
+  margin: 11px 0 0;
+  color: #7f7d89;
+  font-size: 8px;
+}
+
+.emotion-journey__notice {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border: 1px solid rgba(240, 165, 95, 0.2);
+  border-radius: 10px;
+  background: rgba(240, 165, 95, 0.07);
+  color: #e5bd8d;
+  font-size: 10px;
+}
+
+.emotion-journey__notice button {
+  flex: 0 0 auto;
+  padding: 6px 10px;
+  border: 1px solid rgba(240, 165, 95, 0.35);
+  border-radius: 8px;
+  background: rgba(240, 165, 95, 0.1);
+  color: #f4d1a5;
+  font: inherit;
+  cursor: pointer;
+}
+
+.emotion-journey__loading,
+.emotion-journey__empty-results {
+  display: grid;
+  min-height: 120px;
+  place-content: center;
+  justify-items: center;
+  gap: 10px;
+  color: #d4d1dc;
+  font-size: 11px;
+  text-align: center;
+}
+
+.emotion-journey__empty-results > span {
+  color: var(--journey-accent);
+  font-size: 25px;
+}
+
+.emotion-journey__empty-results small {
+  color: var(--journey-muted);
+}
+
+.emotion-journey__loader {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--journey-border);
+  border-top-color: var(--journey-accent);
+  border-radius: 50%;
+  animation: emotion-spin 800ms linear infinite;
+}
+
+@keyframes emotion-spin {
+  to { transform: rotate(360deg); }
+}
+
+.emotion-journey__next {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.7fr) minmax(0, 1.5fr);
+  align-items: center;
+  gap: 15px;
+}
+
+.emotion-journey__next h2 {
+  max-width: 300px;
+  font-size: 14px;
+}
+
+.emotion-journey__next p {
+  margin-top: 5px;
+  line-height: 1.5;
+}
+
+.emotion-journey__next-moods {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.emotion-journey__next-moods button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 9px;
+  border: 1px solid color-mix(in srgb, var(--mood-color) 25%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--mood-color) 7%, transparent);
+  color: #e8e6ed;
+  font: inherit;
+  font-size: 9px;
+  cursor: pointer;
+}
+
+.emotion-journey__tools {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(250px, auto);
+  gap: 14px;
+}
+
+.emotion-journey__journey-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.emotion-journey__journey-actions > div {
+  flex: 1 1 100%;
+}
+
+.emotion-journey__journey-actions h2 {
+  font-size: 14px;
+}
+
+.emotion-journey__journey-actions p {
+  margin-top: 4px;
+}
+
+.emotion-journey__journey-actions input,
+.emotion-journey__summary input {
+  min-width: 120px;
+  flex: 1;
+  padding: 9px 10px;
+  border: 1px solid var(--journey-border);
+  border-radius: 9px;
+  outline: 0;
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font: inherit;
+  font-size: 9px;
+}
+
+.emotion-journey__journey-actions input:focus,
+.emotion-journey__summary input:focus {
+  border-color: var(--journey-accent);
+}
+
+.emotion-journey__journey-actions > button {
+  min-height: 34px;
+  padding: 0 10px;
+  color: #e9e6ef;
+  font-size: 9px;
+}
+
+.emotion-journey__journey-actions > button:first-of-type {
+  border-color: color-mix(in srgb, var(--journey-accent) 48%, transparent);
+  background: color-mix(in srgb, var(--journey-accent) 13%, transparent);
+}
+
+.emotion-journey__journey-actions > button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.emotion-journey__stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+  margin: 0;
+}
+
+.emotion-journey__stats article {
+  display: grid;
+  gap: 3px;
+  padding: 9px;
+  border: 1px solid var(--journey-border);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.emotion-journey__stats strong {
+  color: var(--journey-accent);
+  font-size: 14px;
+}
+
+.emotion-journey__stats span {
+  color: var(--journey-muted);
+  font-size: 8px;
+}
+
+.emotion-journey__summary {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  border-color: color-mix(in srgb, var(--journey-accent) 38%, transparent);
+}
+
+.emotion-journey__summary > span {
+  color: var(--journey-accent);
+  font-size: 25px;
+}
+
+.emotion-journey__summary > div {
+  display: grid;
+  justify-items: start;
+  gap: 8px;
+}
+
+.emotion-journey__summary small {
+  color: var(--journey-accent);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.emotion-journey__summary h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.emotion-journey__summary p,
+.emotion-journey__summary strong {
+  margin: 0;
+  color: #c5c2cd;
+  font-size: 10px;
+}
+
+.emotion-journey__summary-favorites {
+  display: grid;
+  gap: 5px;
+}
+
+.emotion-journey__summary-favorites h3 {
+  margin: 0 0 2px;
+  font-size: 11px;
+}
+
+.emotion-journey__summary-favorites span {
+  color: #c5c2cd;
+  font-size: 9px;
+}
+
+.emotion-journey__summary button {
+  padding: 8px 12px;
+  border-color: color-mix(in srgb, var(--journey-accent) 45%, transparent);
+  background: color-mix(in srgb, var(--journey-accent) 12%, transparent);
+  font-size: 9px;
+}
+
+.emotion-journey__saved-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
+  gap: 8px;
+}
+
+.emotion-journey__saved-list button {
+  display: grid;
+  justify-items: start;
+  gap: 5px;
+  padding: 11px;
+  border: 1px solid var(--journey-border);
+  border-radius: 11px;
+  background: rgba(0, 0, 0, 0.16);
+  color: #f0eef4;
+  text-align: left;
+  cursor: pointer;
+}
+
+.emotion-journey__saved-list strong {
+  font-size: 10px;
+}
+
+.emotion-journey__saved-list span,
+.emotion-journey__saved-list small,
+.emotion-journey__saved-empty {
+  color: var(--journey-muted);
+  font-size: 8px;
+}
+
+.emotion-journey__saved-empty {
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .emotion-journey {
+    padding: 52px 15px 36px;
+  }
+
+  .emotion-journey__hero {
+    min-height: 125px;
+  }
+
+  .emotion-journey__mood-orb {
+    width: 80px;
+    height: 80px;
+  }
+
+  .emotion-journey__mood-orb span {
+    font-size: 34px;
+  }
+
+  .emotion-journey__moods {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .emotion-journey__next,
+  .emotion-journey__tools {
+    grid-template-columns: 1fr;
+  }
+
+  .emotion-journey__next-moods {
+    justify-content: flex-start;
+  }
+
+  .emotion-journey__song {
+    grid-template-columns: 18px 38px minmax(0, 1fr) 29px 29px;
+    gap: 6px;
+  }
+
+  .emotion-journey__song > img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .emotion-journey__playlist-action,
+  .emotion-journey__song .emotion-journey__add-journey,
+  .emotion-journey__song .emotion-journey__favorite-stage {
+    grid-row: 2;
+  }
+
+  .emotion-journey__playlist-action {
+    grid-column: 3;
+    justify-self: start;
+  }
+
+  .emotion-journey__song .emotion-journey__add-journey {
+    grid-column: 4 / span 2;
+    justify-self: end;
+  }
+
+  .emotion-journey__song .emotion-journey__favorite-stage {
+    display: none;
+  }
+
+  .emotion-journey__section-title {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 450px) {
+  .emotion-journey__hero {
+    align-items: flex-start;
+  }
+
+  .emotion-journey__mood-orb {
+    width: 58px;
+    height: 58px;
+  }
+
+  .emotion-journey__mood-orb span {
+    font-size: 26px;
+  }
+
+  .emotion-journey__mood-picker,
+  .emotion-journey__journey-card,
+  .emotion-journey__collection,
+  .emotion-journey__next,
+  .emotion-journey__tools,
+  .emotion-journey__saved,
+  .emotion-journey__welcome {
+    padding: 13px;
+  }
+
+  .emotion-journey__current-pill {
+    max-width: 100px;
+    text-align: right;
+  }
+}

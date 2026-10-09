@@ -1,0 +1,30 @@
+{
+  "name": "music-player-interface",
+  "version": "1.0.0",
+  "description": "Modern music player web application with Spotify Web API and Last.fm API integration",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "node server.js",
+    "backend": "python ../backend/manage.py runserver 127.0.0.1:8000"
+  },
+  "keywords": [
+    "music-player",
+    "spotify-api",
+    "lastfm-api",
+    "pkce",
+    "oauth2"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^6.2.0"
+  },
+  "dependencies": {
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  }
+}

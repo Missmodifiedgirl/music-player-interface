@@ -1,0 +1,2324 @@
+.modal-overlay.feature-music-dna-overlay {
+  align-items: stretch;
+  padding: 0;
+  background: rgba(5, 5, 10, 0.96);
+}
+
+.modal-card.feature-music-dna-dialog {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: #0b0b11;
+}
+
+.modal-card.feature-music-dna-dialog > .modal-close-btn {
+  position: fixed;
+  z-index: 20;
+  top: 17px;
+  right: 22px;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid rgba(235, 219, 255, 0.17);
+  border-radius: 50%;
+  background: rgba(17, 16, 25, 0.88);
+  color: #f1eafa;
+  font-size: 24px;
+  backdrop-filter: blur(12px);
+}
+
+.react-feature-menu.is-music-dna-open {
+  display: none;
+}
+
+.music-dna {
+  --dna-text: #f3eff8;
+  --dna-muted: #a49aaa;
+  --dna-faint: #716a7e;
+  --dna-line: rgba(232, 215, 255, 0.1);
+  --dna-panel: rgba(24, 21, 32, 0.72);
+  --dna-violet: #c99af3;
+  position: relative;
+  height: 100%;
+  overflow: auto;
+  color: var(--dna-text);
+  background:
+    radial-gradient(ellipse at 73% 9%, rgba(129, 79, 182, 0.17), transparent 34%),
+    radial-gradient(ellipse at 5% 41%, rgba(54, 105, 128, 0.09), transparent 29%),
+    #0b0b11;
+  font-family: Inter, "Segoe UI", sans-serif;
+  scrollbar-color: rgba(200, 166, 232, 0.38) transparent;
+}
+
+.music-dna * {
+  box-sizing: border-box;
+}
+
+.music-dna__topbar,
+.music-dna__layout {
+  width: min(1240px, calc(100% - 72px));
+  margin-inline: auto;
+}
+
+.music-dna__topbar {
+  min-height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  border-bottom: 1px solid rgba(232, 215, 255, 0.08);
+}
+
+.music-dna__brand,
+.music-dna__topbar-actions,
+.music-dna__current-mood,
+.music-dna__privacy {
+  display: flex;
+  align-items: center;
+}
+
+.music-dna__brand {
+  gap: 10px;
+  color: #e1d5ef;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+}
+
+.music-dna__brand > span {
+  color: #c995f0;
+  font-size: 18px;
+}
+
+.music-dna__brand i {
+  color: #666071;
+  font-style: normal;
+}
+
+.music-dna__topbar-actions {
+  gap: 18px;
+}
+
+.music-dna__current-mood {
+  gap: 7px;
+  color: #cfc6d7;
+  font-size: 11px;
+}
+
+.music-dna__privacy {
+  gap: 7px;
+  color: #8d8998;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.music-dna__privacy span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #82d8bb;
+  box-shadow: 0 0 10px rgba(130, 216, 187, 0.62);
+}
+
+.music-dna__layout {
+  padding: 16px 0 28px;
+}
+
+.music-dna__hero {
+  position: relative;
+  display: grid;
+  min-height: 344px;
+  grid-template-columns: 1.18fr 0.82fr;
+  align-items: center;
+  padding: 31px 50px 29px;
+  overflow: hidden;
+  border: 1px solid rgba(233, 210, 255, 0.12);
+  border-radius: 23px;
+  background:
+    radial-gradient(ellipse at 74% 49%, rgba(128, 85, 185, 0.2), transparent 38%),
+    linear-gradient(116deg, rgba(27, 23, 36, 0.97), rgba(20, 19, 30, 0.88) 59%, rgba(21, 24, 37, 0.95));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035), 0 25px 80px rgba(0, 0, 0, 0.16);
+}
+
+.music-dna__hero::before,
+.music-dna__hero::after {
+  position: absolute;
+  content: "";
+  pointer-events: none;
+}
+
+.music-dna__hero::before {
+  top: -180px;
+  right: -80px;
+  width: 510px;
+  height: 510px;
+  border: 1px solid rgba(224, 198, 255, 0.045);
+  border-radius: 50%;
+}
+
+.music-dna__hero::after {
+  top: -122px;
+  right: -21px;
+  width: 392px;
+  height: 392px;
+  border: 1px solid rgba(224, 198, 255, 0.045);
+  border-radius: 50%;
+}
+
+.music-dna__hero-copy {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+
+.music-dna__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #b7a5c9;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+}
+
+.music-dna__eyebrow > span {
+  color: #e2aef9;
+  font-size: 16px;
+}
+
+.music-dna__hero h1 {
+  margin: 13px 0 10px;
+  color: #f5eefb;
+  font-size: clamp(40px, 5vw, 64px);
+  font-weight: 650;
+  letter-spacing: -0.06em;
+  line-height: 1.02;
+}
+
+.music-dna__hero h1 em {
+  color: #d8b3f6;
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.055em;
+}
+
+.music-dna__hero-intro {
+  margin: 0;
+  color: #aaa1b3;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.music-dna__hero-intro strong {
+  color: #e3d8ed;
+  font-weight: 500;
+}
+
+.music-dna__personality {
+  display: flex;
+  max-width: 535px;
+  gap: 14px;
+  align-items: flex-start;
+  margin-top: 23px;
+  padding: 14px 17px;
+  border: 1px solid rgba(225, 196, 255, 0.14);
+  border-radius: 14px;
+  background: linear-gradient(115deg, rgba(157, 111, 204, 0.14), rgba(22, 23, 34, 0.48));
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.035);
+}
+
+.music-dna__personality-icon {
+  display: grid;
+  width: 41px;
+  height: 41px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid rgba(229, 204, 255, 0.13);
+  border-radius: 12px;
+  background: rgba(209, 173, 238, 0.12);
+  font-size: 21px;
+}
+
+.music-dna__personality > div > span {
+  color: #b8a1cb;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.music-dna__personality h2 {
+  margin: 3px 0 4px;
+  color: #f0e5f7;
+  font-size: 17px;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+}
+
+.music-dna__personality p {
+  max-width: 420px;
+  margin: 0;
+  color: #b5acbd;
+  font-size: 10px;
+  line-height: 1.55;
+}
+
+.music-dna__personality small {
+  display: block;
+  margin-top: 6px;
+  color: #887c92;
+  font-size: 9px;
+}
+
+.music-dna__hero-meta {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-top: 15px;
+  color: #8f879a;
+  font-size: 9px;
+}
+
+.music-dna__hero-meta strong {
+  color: #d9c9e6;
+  font-size: 11px;
+}
+
+.music-dna__meta-dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #8c70a7;
+}
+
+.music-dna__helix-wrap {
+  position: relative;
+  display: grid;
+  min-height: 290px;
+  place-items: center;
+}
+
+.music-dna__helix {
+  position: relative;
+  z-index: 1;
+  width: min(222px, 82%);
+  height: 278px;
+  overflow: visible;
+  filter: drop-shadow(0 0 20px rgba(175, 133, 229, 0.21));
+}
+
+.music-dna__orbit {
+  position: absolute;
+  border: 1px solid rgba(207, 178, 245, 0.11);
+  border-radius: 50%;
+  transform: rotate(-24deg);
+}
+
+.music-dna__orbit--one {
+  width: 282px;
+  height: 116px;
+}
+
+.music-dna__orbit--two {
+  width: 300px;
+  height: 143px;
+  transform: rotate(39deg);
+}
+
+.music-dna__float {
+  position: absolute;
+  z-index: 2;
+  color: #f4d5ff;
+  text-shadow: 0 0 19px rgba(222, 173, 255, 0.9);
+  animation: music-dna-float 4s ease-in-out infinite;
+}
+
+.music-dna__float--note {
+  top: 45px;
+  right: 30px;
+  font-size: 21px;
+}
+
+.music-dna__float--spark {
+  bottom: 68px;
+  left: 26px;
+  color: #9aeee0;
+  font-size: 17px;
+  animation-delay: -2s;
+}
+
+.music-dna__helix-caption {
+  position: absolute;
+  bottom: 1px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #a9a0b4;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+
+.music-dna__helix-caption span {
+  color: #ddacec;
+  font-size: 14px;
+}
+
+.music-dna__tabs {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 55px;
+  border-bottom: 1px solid rgba(232, 215, 255, 0.08);
+}
+
+.music-dna__tabs button {
+  position: relative;
+  align-self: stretch;
+  padding: 0 16px;
+  border: 0;
+  background: transparent;
+  color: #878191;
+  font: inherit;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.music-dna__tabs button::after {
+  position: absolute;
+  right: 16px;
+  bottom: -1px;
+  left: 16px;
+  height: 2px;
+  background: #d0a5f3;
+  content: "";
+  opacity: 0;
+}
+
+.music-dna__tabs button.is-active {
+  color: #eadbf6;
+}
+
+.music-dna__tabs button.is-active::after {
+  opacity: 1;
+}
+
+.music-dna__updated {
+  margin-left: auto;
+  color: #716b7a;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+}
+
+.music-dna__dna-grid,
+.music-dna__middle-grid,
+.music-dna__bottom-grid {
+  display: grid;
+  gap: 14px;
+  margin-top: 15px;
+}
+
+.music-dna__dna-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+.music-dna__middle-grid {
+  grid-template-columns: 0.93fr 1.07fr;
+}
+
+.music-dna__bottom-grid {
+  grid-template-columns: 1.08fr 0.92fr;
+}
+
+.music-dna__panel {
+  min-width: 0;
+  padding: 21px 22px;
+  border: 1px solid var(--dna-line);
+  border-radius: 17px;
+  background: var(--dna-panel);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.026), 0 10px 30px rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(16px);
+}
+
+.music-dna__section-heading,
+.music-dna__insights-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.music-dna__section-heading h2,
+.music-dna__insights-heading h2 {
+  margin: 5px 0 0;
+  color: #f0eaf5;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.music-dna__heading-glyph {
+  color: rgba(214, 178, 245, 0.66);
+  font-family: Georgia, serif;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.music-dna__bar-list {
+  display: grid;
+  gap: 13px;
+  margin-top: 22px;
+}
+
+.music-dna__bar-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  color: #d2c9da;
+  font-size: 10px;
+}
+
+.music-dna__bar-label > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.music-dna__bar-label i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--row-color);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--row-color) 55%, transparent);
+}
+
+.music-dna__bar-label strong {
+  color: #c6b2d4;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.music-dna__bar-track,
+.music-dna__mood-track,
+.music-dna__artist-line {
+  height: 4px;
+  overflow: hidden;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.music-dna__bar-track > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--row-color), color-mix(in srgb, var(--row-color) 48%, white));
+  box-shadow: 0 0 10px color-mix(in srgb, var(--row-color) 46%, transparent);
+  animation: music-dna-bar-in 750ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.music-dna__source-note {
+  margin: 14px 0 0;
+  color: #766f80;
+  font-size: 8px;
+  line-height: 1.5;
+}
+
+.music-dna__mood-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.music-dna__mood-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.music-dna__mood-icon {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--mood-color) 20%, transparent);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--mood-color) 10%, transparent);
+  font-size: 15px;
+}
+
+.music-dna__mood-copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.music-dna__mood-copy > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  color: #d2c9da;
+  font-size: 9px;
+}
+
+.music-dna__mood-copy > div:first-child span {
+  color: #a99ab7;
+}
+
+.music-dna__mood-track {
+  height: 3px;
+}
+
+.music-dna__mood-track span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--mood-color);
+  box-shadow: 0 0 9px color-mix(in srgb, var(--mood-color) 55%, transparent);
+}
+
+.music-dna__empty-inline {
+  display: flex;
+  min-height: 142px;
+  align-items: center;
+  gap: 14px;
+  margin-top: 13px;
+  padding: 16px 17px;
+  border: 1px dashed rgba(226, 203, 255, 0.14);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.012);
+}
+
+.music-dna__empty-inline > span {
+  color: #c6a3e3;
+  font-size: 24px;
+}
+
+.music-dna__empty-inline p {
+  max-width: 310px;
+  margin: 0;
+  color: #a39aaa;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.music-dna__subtle-count {
+  padding-top: 5px;
+  color: #847a8c;
+  font-size: 9px;
+}
+
+.music-dna__artist-list {
+  display: grid;
+  gap: 13px;
+  margin-top: 20px;
+}
+
+.music-dna__artist-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.music-dna__artist-rank {
+  width: 15px;
+  color: #777080;
+  font-size: 8px;
+  font-weight: 700;
+}
+
+.music-dna__artist-art {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  place-items: center;
+  border: 1px solid rgba(229, 211, 251, 0.12);
+  border-radius: 50%;
+  background: linear-gradient(145deg, #3d304c, #1d2832);
+  color: #d5b8ef;
+  font-size: 15px;
+}
+
+.music-dna__artist-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.music-dna__artist-details {
+  min-width: 0;
+  flex: 1;
+}
+
+.music-dna__artist-details > div:first-child {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 7px;
+}
+
+.music-dna__artist-details strong {
+  overflow: hidden;
+  color: #e0d8e8;
+  font-size: 10px;
+  font-weight: 550;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.music-dna__artist-details small {
+  flex: 0 0 auto;
+  color: #94899d;
+  font-size: 8px;
+}
+
+.music-dna__artist-line {
+  height: 2px;
+  margin-top: 6px;
+}
+
+.music-dna__artist-line span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #b991e3, #82dace);
+}
+
+.music-dna__peak {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-top: 19px;
+  padding: 12px 14px;
+  border: 1px solid rgba(206, 170, 239, 0.13);
+  border-radius: 12px;
+  background: linear-gradient(100deg, rgba(170, 116, 211, 0.12), rgba(83, 118, 161, 0.06));
+}
+
+.music-dna__peak-moon {
+  display: grid;
+  width: 37px;
+  height: 37px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(203, 169, 237, 0.11);
+  color: #ead0ff;
+  font-size: 21px;
+}
+
+.music-dna__peak > div {
+  display: grid;
+  gap: 2px;
+}
+
+.music-dna__peak small {
+  color: #a791bb;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.music-dna__peak strong {
+  color: #f1e8f8;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.music-dna__peak p {
+  margin: 0;
+  color: #968d9e;
+  font-size: 8px;
+}
+
+.music-dna__hours {
+  display: grid;
+  height: 67px;
+  grid-template-columns: repeat(24, minmax(0, 1fr));
+  align-items: end;
+  gap: 4px;
+  margin-top: 17px;
+  padding: 0 2px;
+  border-bottom: 1px solid rgba(232, 215, 255, 0.1);
+}
+
+.music-dna__hours > span {
+  display: flex;
+  height: 100%;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: var(--hour-opacity);
+}
+
+.music-dna__hours i {
+  display: block;
+  width: min(100%, 12px);
+  height: var(--hour-height);
+  border-radius: 3px 3px 0 0;
+  background: linear-gradient(180deg, #d8adfa, #6f9fc9);
+  box-shadow: 0 0 8px rgba(191, 148, 237, 0.14);
+  transition: height 450ms ease;
+}
+
+.music-dna__hours-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 7px;
+  color: #777081;
+  font-size: 7px;
+}
+
+.music-dna__insights {
+  margin-top: 24px;
+}
+
+.music-dna__insights-heading {
+  align-items: end;
+  margin-bottom: 13px;
+}
+
+.music-dna__insights-heading > span {
+  color: #777081;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.music-dna__stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 11px;
+}
+
+.music-dna__stat {
+  display: flex;
+  min-height: 126px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px;
+  border: 1px solid var(--dna-line);
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(25, 22, 33, 0.82), rgba(18, 19, 27, 0.65));
+}
+
+.music-dna__stat-icon {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  margin-bottom: 10px;
+  border: 1px solid rgba(216, 185, 244, 0.12);
+  border-radius: 9px;
+  background: rgba(199, 160, 231, 0.08);
+  color: #d3afea;
+  font-size: 14px;
+}
+
+.music-dna__stat > small {
+  color: #8d8495;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.music-dna__stat > strong {
+  max-width: 100%;
+  overflow: hidden;
+  margin-top: 5px;
+  color: #e8e0ee;
+  font-size: 13px;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.music-dna__stat > span:last-child {
+  margin-top: 4px;
+  color: #857d8e;
+  font-size: 8px;
+  line-height: 1.4;
+}
+
+.music-dna__discovery-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 18px;
+}
+
+.music-dna__ring {
+  display: grid;
+  width: 104px;
+  height: 104px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 50%;
+  background: conic-gradient(from -90deg, #d3a5f7 0deg, #83d9d2 var(--dna-score), rgba(255, 255, 255, 0.08) var(--dna-score), rgba(255, 255, 255, 0.08) 360deg);
+  box-shadow: 0 0 28px rgba(182, 140, 228, 0.11);
+}
+
+.music-dna__ring > div {
+  display: flex;
+  width: 84px;
+  height: 84px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(231, 211, 255, 0.09);
+  border-radius: 50%;
+  background: #18151f;
+}
+
+.music-dna__ring strong {
+  color: #f2e9fa;
+  font-size: 24px;
+  font-weight: 550;
+  letter-spacing: -0.06em;
+}
+
+.music-dna__ring span {
+  margin-top: 1px;
+  color: #a294af;
+  font-size: 6px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.music-dna__discovery-content > div:last-child {
+  min-width: 0;
+}
+
+.music-dna__discovery-content > div:last-child > strong {
+  color: #e1d6eb;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.music-dna__discovery-content p {
+  margin: 6px 0;
+  color: #a097a8;
+  font-size: 9px;
+  line-height: 1.6;
+}
+
+.music-dna__discovery-content small {
+  color: #756d7d;
+  font-size: 7px;
+  line-height: 1.5;
+}
+
+.music-dna__current-body {
+  display: flex;
+  min-height: 112px;
+  align-items: center;
+  gap: 15px;
+  margin-top: 13px;
+  padding: 16px;
+  border: 1px solid rgba(235, 167, 202, 0.1);
+  border-radius: 13px;
+  background: linear-gradient(110deg, rgba(188, 112, 158, 0.1), rgba(107, 94, 156, 0.06));
+}
+
+.music-dna__current-emoji {
+  display: grid;
+  width: 49px;
+  height: 49px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 14px;
+  background: rgba(234, 176, 211, 0.11);
+  font-size: 24px;
+}
+
+.music-dna__current-body strong {
+  color: #eadfed;
+  font-size: 12px;
+}
+
+.music-dna__current-body p {
+  margin: 5px 0 0;
+  color: #a198aa;
+  font-size: 9px;
+  line-height: 1.6;
+}
+
+.music-dna__people-like-me {
+  margin-top: 20px;
+  padding: 17px;
+  border: 1px solid rgba(213, 190, 172, 0.13);
+  border-radius: 15px;
+  background:
+    radial-gradient(ellipse at 0% 100%, rgba(89, 158, 143, 0.09), transparent 38%),
+    linear-gradient(120deg, rgba(27, 27, 28, 0.9), rgba(21, 22, 29, 0.88));
+}
+
+.music-dna__people-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 13px;
+}
+
+.music-dna__people-heading h2 {
+  margin: 5px 0 3px;
+  color: #f1eaf5;
+  font-size: 18px;
+  font-weight: 590;
+  letter-spacing: -0.04em;
+}
+
+.music-dna__people-heading h2 span {
+  color: #a8d8c3;
+}
+
+.music-dna__people-heading p {
+  margin: 0;
+  color: #a49aaa;
+  font-size: 9px;
+}
+
+.music-dna__people-source {
+  padding-bottom: 2px;
+  color: #7f8790;
+  font-size: 6px;
+  font-weight: 760;
+  letter-spacing: 0.12em;
+  white-space: nowrap;
+}
+
+.music-dna__similar-strip {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.7fr) 2fr;
+  gap: 10px;
+}
+
+.music-dna__similar-origin {
+  display: flex;
+  min-height: 111px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  padding: 13px;
+  border: 1px solid rgba(188, 221, 198, 0.12);
+  border-radius: 11px;
+  background: linear-gradient(145deg, rgba(80, 125, 107, 0.13), rgba(32, 35, 33, 0.6));
+}
+
+.music-dna__similar-origin > span {
+  color: #a4d2bd;
+  font-size: 17px;
+}
+
+.music-dna__similar-origin > small {
+  color: #8d9d93;
+  font-size: 6px;
+  font-weight: 760;
+  letter-spacing: 0.1em;
+}
+
+.music-dna__similar-origin > strong {
+  overflow: hidden;
+  color: #eee9e2;
+  font-size: 11px;
+  font-weight: 620;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.music-dna__similar-origin > i {
+  color: #a09e95;
+  font-size: 7px;
+  font-style: normal;
+}
+
+.music-dna__similar-artists {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.music-dna__similar-artist {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 9px;
+  border: 1px solid rgba(224, 215, 231, 0.1);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.025);
+  color: inherit;
+  text-decoration: none;
+  transition: transform 160ms ease, border-color 160ms ease;
+}
+
+.music-dna__similar-artist:hover {
+  transform: translateY(-2px);
+  border-color: rgba(177, 218, 190, 0.31);
+}
+
+.music-dna__similar-artist > span {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(211, 198, 226, 0.13);
+  border-radius: 50%;
+  background: rgba(186, 153, 215, 0.1);
+}
+
+.music-dna__similar-artist > span img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.music-dna__similar-artist > span i {
+  color: #c7aadf;
+  font-size: 14px;
+  font-style: normal;
+}
+
+.music-dna__similar-artist > strong {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 7px;
+  color: #e9e4ec;
+  font-size: 8px;
+  font-weight: 620;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.music-dna__similar-artist > small {
+  margin-top: 3px;
+  color: #928c99;
+  font-size: 6px;
+}
+
+.music-dna__similar-artist > b {
+  margin-top: auto;
+  padding-top: 7px;
+  color: #a9d6c0;
+  font-size: 6px;
+  font-weight: 650;
+}
+
+.music-dna__similar-status,
+.music-dna__similar-empty {
+  display: flex;
+  min-height: 90px;
+  grid-column: 1 / -1;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 14px;
+  border: 1px dashed rgba(221, 213, 227, 0.11);
+  border-radius: 10px;
+  color: #a49aaa;
+  font-size: 8px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.music-dna__similar-empty {
+  gap: 10px;
+}
+
+.music-dna__similar-empty > span {
+  color: #baa0d3;
+  font-size: 19px;
+}
+
+.music-dna__similar-empty p {
+  margin: 0;
+}
+
+.music-dna__similar-disclaimer {
+  margin: 9px 0 0;
+  color: #76717e;
+  font-size: 7px;
+  line-height: 1.6;
+}
+
+.music-dna__summary {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 22px;
+  margin-top: 21px;
+  padding: 24px 28px;
+  overflow: hidden;
+  border: 1px solid rgba(214, 184, 247, 0.2);
+  border-radius: 19px;
+  background:
+    radial-gradient(ellipse at 11% 80%, rgba(111, 195, 188, 0.12), transparent 31%),
+    radial-gradient(ellipse at 93% 12%, rgba(174, 116, 215, 0.17), transparent 36%),
+    linear-gradient(120deg, #1d1928, #161722 64%, #1b1924);
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.13), inset 0 1px rgba(255, 255, 255, 0.04);
+}
+
+.music-dna__summary-orb {
+  display: grid;
+  width: 67px;
+  height: 67px;
+  place-items: center;
+  border: 1px solid rgba(222, 187, 249, 0.17);
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(189, 141, 230, 0.22), rgba(105, 189, 181, 0.11));
+  box-shadow: 0 0 35px rgba(185, 140, 229, 0.1);
+  font-size: 31px;
+}
+
+.music-dna__summary-copy {
+  min-width: 0;
+}
+
+.music-dna__summary-copy h2 {
+  display: inline;
+  margin: 0 9px 0 0;
+  color: #f3eaf9;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.music-dna__summary-copy > strong {
+  color: #dbb8f4;
+  font-size: 12px;
+  font-weight: 550;
+}
+
+.music-dna__summary-copy > p {
+  margin: 8px 0 12px;
+  color: #c1b5cb;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.music-dna__summary-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.music-dna__summary-tags span {
+  padding: 5px 8px;
+  border: 1px solid rgba(223, 205, 241, 0.09);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.025);
+  color: #978d9f;
+  font-size: 7px;
+}
+
+.music-dna__summary-tags b {
+  margin-left: 3px;
+  color: #dbcee5;
+  font-weight: 600;
+}
+
+.music-dna__summary-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.music-dna__summary-actions button {
+  min-height: 31px;
+  padding: 0 11px;
+  border: 1px solid rgba(218, 188, 242, 0.19);
+  border-radius: 8px;
+  background: rgba(196, 149, 231, 0.12);
+  color: #eadbf5;
+  font: inherit;
+  font-size: 8px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.music-dna__summary-actions button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(223, 190, 252, 0.37);
+  background: rgba(196, 149, 231, 0.2);
+}
+
+.music-dna__summary-actions .music-dna__explore {
+  background: rgba(255, 255, 255, 0.025);
+  color: #b5a9c0;
+}
+
+.music-dna__summary-actions .music-dna__explore span {
+  margin-left: 5px;
+  color: #cfadeb;
+}
+
+.music-dna__summary-score {
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+}
+
+.music-dna__summary-score .music-dna__ring {
+  width: 86px;
+  height: 86px;
+}
+
+.music-dna__summary-score .music-dna__ring > div {
+  width: 70px;
+  height: 70px;
+}
+
+.music-dna__summary-score .music-dna__ring strong {
+  font-size: 20px;
+}
+
+.music-dna__summary-score > span {
+  color: #95889f;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.music-dna__share-message {
+  margin: 7px 0 0;
+  color: #a7e1ce;
+  font-size: 9px;
+}
+
+.music-dna__footnote {
+  margin: 16px 0 0;
+  color: #80798a;
+  font-size: 9px;
+  line-height: 1.6;
+}
+
+.music-dna__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding-top: 18px;
+  color: #716a79;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.music-dna__footer button {
+  border: 0;
+  background: none;
+  color: #92889b;
+  font: inherit;
+  font-size: 8px;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+
+.music-dna__footer button span {
+  margin-left: 4px;
+  color: #c4a0e1;
+}
+
+@keyframes music-dna-float {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(-9px) rotate(7deg); }
+}
+
+@keyframes music-dna-bar-in {
+  from { transform: scaleX(0); transform-origin: left; }
+  to { transform: scaleX(1); transform-origin: left; }
+}
+
+@media (max-width: 820px) {
+  .music-dna__topbar,
+  .music-dna__layout {
+    width: min(100% - 38px, 680px);
+  }
+
+  .music-dna__hero {
+    min-height: 330px;
+    grid-template-columns: 1.2fr 0.8fr;
+    padding: 25px 28px;
+  }
+
+  .music-dna__helix {
+    height: 240px;
+  }
+
+  .music-dna__dna-grid,
+  .music-dna__middle-grid,
+  .music-dna__bottom-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .music-dna__similar-strip {
+    grid-template-columns: minmax(130px, 0.65fr) 2fr;
+  }
+
+  .music-dna__similar-artists {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .modal-card.feature-music-dna-dialog > .modal-close-btn {
+    top: 9px;
+    right: 10px;
+    width: 33px;
+    height: 33px;
+  }
+}
+
+  .music-dna__taste-profile {
+    margin-top: 22px;
+    padding: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(214, 187, 245, 0.15);
+    border-radius: 20px;
+    background:
+      radial-gradient(ellipse at 88% 0%, rgba(149, 100, 194, 0.12), transparent 34%),
+      linear-gradient(145deg, rgba(24, 21, 32, 0.94), rgba(17, 19, 28, 0.94));
+    box-shadow: inset 0 1px rgba(255, 255, 255, 0.025), 0 18px 50px rgba(0, 0, 0, 0.1);
+  }
+
+  .music-dna__taste-heading,
+  .music-dna__taste-card-title {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 14px;
+  }
+
+  .music-dna__taste-heading {
+    align-items: center;
+    margin-bottom: 19px;
+  }
+
+  .music-dna__taste-heading h2 {
+    margin: 6px 0 4px;
+    color: #f3eafa;
+    font-size: 24px;
+    font-weight: 620;
+    letter-spacing: -0.045em;
+  }
+
+  .music-dna__taste-heading p,
+  .music-dna__taste-recommendation-intro {
+    margin: 0;
+    color: #a49aaa;
+    font-size: 10px;
+    line-height: 1.65;
+  }
+
+  .music-dna__taste-badge {
+    max-width: 220px;
+    padding: 9px 12px;
+    border: 1px solid rgba(211, 177, 241, 0.18);
+    border-radius: 999px;
+    background: rgba(171, 119, 212, 0.09);
+    color: #e3cef3;
+    font-size: 9px;
+    font-weight: 650;
+    text-align: center;
+  }
+
+  .music-dna__taste-empty {
+    display: flex;
+    min-height: 130px;
+    align-items: center;
+    gap: 17px;
+    padding: 22px;
+    border: 1px dashed rgba(226, 203, 255, 0.17);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.018);
+  }
+
+  .music-dna__taste-empty > span {
+    color: #d2aff1;
+    font-size: 30px;
+  }
+
+  .music-dna__taste-empty strong {
+    color: #eee5f5;
+    font-size: 13px;
+  }
+
+  .music-dna__taste-empty p {
+    max-width: 540px;
+    margin: 7px 0 0;
+    color: #a49aaa;
+    font-size: 10px;
+    line-height: 1.7;
+  }
+
+  .music-dna__taste-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 12px;
+  }
+
+  .music-dna__taste-grid--lower {
+    margin-top: 12px;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .music-dna__taste-card,
+  .music-dna__taste-recommendations {
+    min-width: 0;
+    padding: 17px;
+    border: 1px solid rgba(232, 215, 255, 0.095);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.022);
+  }
+
+  .music-dna__taste-card-title {
+    align-items: center;
+    margin-bottom: 14px;
+  }
+
+  .music-dna__taste-card-title > div > span {
+    color: #988aa2;
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+  }
+
+  .music-dna__taste-card-title h3 {
+    margin: 4px 0 0;
+    color: #eee6f3;
+    font-size: 14px;
+    font-weight: 590;
+    letter-spacing: -0.02em;
+  }
+
+  .music-dna__taste-card-title > b {
+    color: #c39be0;
+    font-size: 17px;
+    font-weight: 500;
+  }
+
+  .music-dna__taste-song-list {
+    display: grid;
+    gap: 5px;
+  }
+
+  .music-dna__taste-song {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 9px;
+    padding: 6px 3px;
+  }
+
+  .music-dna__taste-song-rank {
+    width: 15px;
+    color: #807789;
+    font-size: 8px;
+  }
+
+  .music-dna__taste-song > img,
+  .music-dna__recommendation > img {
+    width: 38px;
+    height: 38px;
+    flex: 0 0 auto;
+    border: 1px solid rgba(229, 211, 251, 0.12);
+    border-radius: 8px;
+    object-fit: cover;
+  }
+
+  .music-dna__taste-song-copy,
+  .music-dna__recommendation > div {
+    display: grid;
+    min-width: 0;
+    flex: 1;
+    gap: 3px;
+  }
+
+  .music-dna__taste-song-copy strong,
+  .music-dna__recommendation strong {
+    overflow: hidden;
+    color: #e5dce9;
+    font-size: 9px;
+    font-weight: 600;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .music-dna__taste-song-copy span,
+  .music-dna__recommendation span,
+  .music-dna__recommendation small {
+    overflow: hidden;
+    color: #94899c;
+    font-size: 8px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .music-dna__mini-play,
+  .music-dna__mini-save,
+  .music-dna__recommendation > button {
+    display: grid;
+    width: 27px;
+    height: 27px;
+    flex: 0 0 auto;
+    place-items: center;
+    border: 1px solid rgba(215, 185, 243, 0.15);
+    border-radius: 50%;
+    background: rgba(190, 148, 224, 0.08);
+    color: #e1c8f4;
+    font-size: 9px;
+    cursor: pointer;
+    transition: transform 150ms ease, background 150ms ease, border-color 150ms ease;
+  }
+
+  .music-dna__mini-play:hover,
+  .music-dna__mini-save:hover,
+  .music-dna__recommendation > button:hover {
+    transform: translateY(-1px);
+    border-color: rgba(221, 187, 252, 0.42);
+    background: rgba(190, 148, 224, 0.2);
+  }
+
+  .music-dna__taste-bars {
+    display: grid;
+    gap: 15px;
+    padding-top: 5px;
+  }
+
+  .music-dna__taste-bars > div > div {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 6px;
+    color: #d7cedd;
+    font-size: 9px;
+  }
+
+  .music-dna__taste-bars strong {
+    color: #b5a3c2;
+    font-weight: 600;
+  }
+
+  .music-dna__taste-track {
+    display: block;
+    height: 4px;
+    overflow: hidden;
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.07);
+  }
+
+  .music-dna__taste-track i {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, var(--row-color), color-mix(in srgb, var(--row-color) 48%, white));
+  }
+
+  .music-dna__taste-empty-note {
+    margin: 0;
+    padding: 13px;
+    border: 1px dashed rgba(226, 203, 255, 0.12);
+    border-radius: 10px;
+    color: #9d93a5;
+    font-size: 9px;
+    line-height: 1.65;
+  }
+
+  .music-dna__taste-periods {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .music-dna__taste-periods > div {
+    display: grid;
+    min-height: 77px;
+    justify-items: center;
+    gap: 4px;
+    padding: 9px 3px;
+    border: 1px solid rgba(232, 215, 255, 0.07);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.018);
+  }
+
+  .music-dna__taste-periods > div.is-peak {
+    border-color: rgba(210, 170, 242, 0.26);
+    background: linear-gradient(145deg, rgba(172, 117, 209, 0.16), rgba(255, 255, 255, 0.02));
+  }
+
+  .music-dna__taste-periods > div > span {
+    font-size: 15px;
+  }
+
+  .music-dna__taste-periods small {
+    color: #a398ad;
+    font-size: 7px;
+  }
+
+  .music-dna__taste-periods strong {
+    color: #e6d7ef;
+    font-size: 11px;
+  }
+
+  .music-dna__taste-week {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 18px;
+  }
+
+  .music-dna__taste-week > div:first-child {
+    display: grid;
+    gap: 4px;
+  }
+
+  .music-dna__taste-week > div:first-child strong {
+    color: #e3d9e9;
+    font-size: 9px;
+  }
+
+  .music-dna__taste-week > div:first-child span {
+    color: #918797;
+    font-size: 7px;
+  }
+
+  .music-dna__taste-week-bars {
+    display: flex;
+    height: 53px;
+    flex: 1;
+    justify-content: flex-end;
+    gap: 7px;
+  }
+
+  .music-dna__taste-week-bars > div {
+    display: flex;
+    width: 19px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+  }
+
+  .music-dna__taste-week-bars i {
+    width: 7px;
+    min-height: 3px;
+    border-radius: 5px;
+    background: linear-gradient(180deg, #d3a8f3, #7cd7cc);
+  }
+
+  .music-dna__taste-week-bars small {
+    color: #877d8d;
+    font-size: 6px;
+  }
+
+  .music-dna__taste-footnote {
+    margin: 11px 0 0;
+    color: #94899c;
+    font-size: 8px;
+    line-height: 1.55;
+  }
+
+  .music-dna__evolution {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .music-dna__evolution > div {
+    display: grid;
+    min-width: 0;
+    gap: 8px;
+    padding: 14px;
+    border: 1px solid rgba(231, 211, 251, 0.08);
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.018);
+  }
+
+  .music-dna__evolution small {
+    color: #918398;
+    font-size: 7px;
+    font-weight: 750;
+    letter-spacing: 0.11em;
+  }
+
+  .music-dna__evolution strong {
+    overflow: hidden;
+    color: #e5d8ef;
+    font-size: 11px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .music-dna__evolution > span {
+    color: #cba4e7;
+    font-size: 15px;
+  }
+
+  .music-dna__identity-card,
+  .music-dna__taste-recommendations {
+    margin-top: 12px;
+  }
+
+  .music-dna__identity-traits {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .music-dna__identity-traits > div {
+    display: grid;
+    min-width: 0;
+    grid-template-columns: 25px minmax(0, 1fr);
+    align-items: center;
+    column-gap: 8px;
+    padding: 10px;
+    border: 1px solid rgba(232, 215, 255, 0.075);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.018);
+  }
+
+  .music-dna__identity-traits > div > span {
+    grid-row: span 2;
+    color: #d2b1ec;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .music-dna__identity-traits strong {
+    overflow: hidden;
+    color: #ded3e6;
+    font-size: 8px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .music-dna__identity-traits small {
+    overflow: hidden;
+    margin-top: 3px;
+    color: #8f8597;
+    font-size: 7px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .music-dna__taste-recommendations {
+    background:
+      radial-gradient(ellipse at 100% 0%, rgba(92, 164, 145, 0.08), transparent 32%),
+      rgba(255, 255, 255, 0.018);
+  }
+
+  .music-dna__taste-recommendation-intro {
+    margin: -5px 0 12px;
+  }
+
+  .music-dna__recommendation-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 7px;
+  }
+
+  .music-dna__recommendation {
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    gap: 8px;
+    padding: 9px;
+    border: 1px solid rgba(232, 215, 255, 0.075);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.025);
+    transition: transform 150ms ease, border-color 150ms ease;
+  }
+
+  .music-dna__recommendation:hover {
+    transform: translateY(-2px);
+    border-color: rgba(201, 154, 243, 0.28);
+  }
+
+  .music-dna__recommendation > img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .music-dna__share-overlay {
+    position: fixed;
+    z-index: 40;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 18px;
+    background: rgba(4, 4, 8, 0.78);
+    backdrop-filter: blur(12px);
+  }
+
+  .music-dna__share-dialog {
+    position: relative;
+    width: min(460px, 100%);
+    padding: 14px;
+    border: 1px solid rgba(232, 215, 255, 0.15);
+    border-radius: 18px;
+    background: #13111a;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.55);
+  }
+
+  .music-dna__share-close {
+    position: absolute;
+    z-index: 1;
+    top: 22px;
+    right: 22px;
+    display: grid;
+    width: 29px;
+    height: 29px;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    background: rgba(7, 7, 12, 0.48);
+    color: #f0e7f5;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  .music-dna__share-card {
+    padding: 28px 24px 20px;
+    overflow: hidden;
+    border: 1px solid rgba(231, 211, 251, 0.13);
+    border-radius: 13px;
+    background:
+      radial-gradient(ellipse at 88% 8%, rgba(181, 123, 225, 0.32), transparent 37%),
+      radial-gradient(ellipse at 0% 100%, rgba(77, 168, 151, 0.17), transparent 43%),
+      linear-gradient(140deg, #252033, #11151e 78%);
+  }
+
+  .music-dna__share-card > span {
+    color: #cfb0e9;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+  }
+
+  .music-dna__share-card h2 {
+    margin: 25px 0 7px;
+    color: #f5ebfc;
+    font-size: 27px;
+    font-weight: 620;
+    letter-spacing: -0.05em;
+  }
+
+  .music-dna__share-card > p {
+    margin: 0;
+    color: #b7aabd;
+    font-size: 10px;
+    line-height: 1.6;
+  }
+
+  .music-dna__share-card > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 22px;
+  }
+
+  .music-dna__share-card > div > span {
+    display: grid;
+    min-width: 0;
+    gap: 6px;
+    padding: 10px;
+    border: 1px solid rgba(232, 215, 255, 0.1);
+    border-radius: 9px;
+    background: rgba(9, 9, 15, 0.24);
+    color: #a99ab4;
+    font-size: 6px;
+    font-weight: 750;
+    letter-spacing: 0.1em;
+  }
+
+  .music-dna__share-card > div strong {
+    overflow: hidden;
+    color: #f0e6f5;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .music-dna__share-card > small {
+    display: block;
+    margin-top: 20px;
+    color: #92849d;
+    font-size: 7px;
+    font-weight: 750;
+    letter-spacing: 0.1em;
+  }
+
+  .music-dna__share-card-action {
+    display: block;
+    min-height: 37px;
+    margin: 12px auto 0;
+    padding: 0 16px;
+    border: 1px solid rgba(218, 188, 242, 0.22);
+    border-radius: 9px;
+    background: rgba(196, 149, 231, 0.13);
+    color: #eadbf5;
+    font: inherit;
+    font-size: 9px;
+    font-weight: 650;
+    cursor: pointer;
+  }
+
+  @media (max-width: 820px) {
+    .music-dna__taste-grid,
+    .music-dna__taste-grid--lower {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .music-dna__taste-profile {
+      margin-top: 13px;
+      padding: 15px;
+      border-radius: 15px;
+    }
+
+    .music-dna__taste-heading {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .music-dna__taste-heading h2 {
+      font-size: 20px;
+    }
+
+    .music-dna__taste-heading p {
+      max-width: 280px;
+      font-size: 9px;
+    }
+
+    .music-dna__taste-card {
+      padding: 13px;
+    }
+
+    .music-dna__taste-periods {
+      gap: 4px;
+    }
+
+    .music-dna__identity-traits {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .music-dna__recommendation-list {
+      grid-template-columns: 1fr;
+    }
+
+    .music-dna__taste-empty {
+      align-items: flex-start;
+      padding: 16px;
+    }
+  }
+
+@media (max-width: 560px) {
+  .music-dna__topbar,
+  .music-dna__layout {
+    width: calc(100% - 24px);
+  }
+
+  .music-dna__topbar {
+    min-height: 54px;
+    padding-right: 35px;
+  }
+
+  .music-dna__brand {
+    gap: 6px;
+    font-size: 8px;
+    letter-spacing: 0.1em;
+  }
+
+  .music-dna__topbar-actions {
+    gap: 0;
+  }
+
+  .music-dna__current-mood {
+    font-size: 0;
+  }
+
+  .music-dna__current-mood span {
+    font-size: 13px;
+  }
+
+  .music-dna__privacy {
+    display: none;
+  }
+
+  .music-dna__layout {
+    padding-top: 10px;
+  }
+
+  .music-dna__hero {
+    min-height: auto;
+    grid-template-columns: 1fr;
+    padding: 23px 19px 18px;
+    border-radius: 18px;
+  }
+
+  .music-dna__people-like-me {
+    padding: 12px;
+  }
+
+  .music-dna__people-heading {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .music-dna__similar-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .music-dna__similar-artists {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .music-dna__hero h1 {
+    font-size: 43px;
+  }
+
+  .music-dna__hero-intro {
+    font-size: 11px;
+  }
+
+  .music-dna__personality {
+    gap: 10px;
+    margin-top: 16px;
+    padding: 11px;
+  }
+
+  .music-dna__personality-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+  }
+
+  .music-dna__personality h2 {
+    font-size: 15px;
+  }
+
+  .music-dna__personality p {
+    font-size: 9px;
+  }
+
+  .music-dna__helix-wrap {
+    position: absolute;
+    top: 4px;
+    right: -48px;
+    width: 160px;
+    min-height: 192px;
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  .music-dna__helix {
+    width: 118px;
+    height: 176px;
+  }
+
+  .music-dna__orbit--one {
+    width: 147px;
+    height: 65px;
+  }
+
+  .music-dna__orbit--two {
+    width: 154px;
+    height: 71px;
+  }
+
+  .music-dna__helix-caption,
+  .music-dna__float {
+    display: none;
+  }
+
+  .music-dna__hero-meta {
+    position: relative;
+    z-index: 2;
+    font-size: 8px;
+  }
+
+  .music-dna__tabs {
+    min-height: 48px;
+    gap: 0;
+  }
+
+  .music-dna__tabs button {
+    padding-inline: 9px;
+    font-size: 9px;
+  }
+
+  .music-dna__tabs button::after {
+    right: 9px;
+    left: 9px;
+  }
+
+  .music-dna__updated {
+    display: none;
+  }
+
+  .music-dna__dna-grid,
+  .music-dna__middle-grid,
+  .music-dna__bottom-grid {
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .music-dna__panel {
+    padding: 17px 15px;
+    border-radius: 14px;
+  }
+
+  .music-dna__section-heading h2,
+  .music-dna__insights-heading h2 {
+    font-size: 15px;
+  }
+
+  .music-dna__eyebrow {
+    font-size: 7px;
+  }
+
+  .music-dna__bar-list,
+  .music-dna__mood-list {
+    gap: 11px;
+    margin-top: 17px;
+  }
+
+  .music-dna__insights {
+    margin-top: 19px;
+  }
+
+  .music-dna__insights-heading > span {
+    display: none;
+  }
+
+  .music-dna__stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .music-dna__stat {
+    min-height: 115px;
+    padding: 12px;
+  }
+
+  .music-dna__discovery-content {
+    gap: 13px;
+  }
+
+  .music-dna__ring {
+    width: 88px;
+    height: 88px;
+  }
+
+  .music-dna__ring > div {
+    width: 72px;
+    height: 72px;
+  }
+
+  .music-dna__ring strong {
+    font-size: 20px;
+  }
+
+  .music-dna__summary {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 13px;
+    margin-top: 15px;
+    padding: 17px 14px;
+    border-radius: 15px;
+  }
+
+  .music-dna__summary-orb {
+    width: 47px;
+    height: 47px;
+    border-radius: 14px;
+    font-size: 23px;
+  }
+
+  .music-dna__summary-copy h2 {
+    font-size: 14px;
+  }
+
+  .music-dna__summary-copy > strong {
+    display: block;
+    margin-top: 3px;
+    font-size: 10px;
+  }
+
+  .music-dna__summary-copy > p {
+    font-size: 11px;
+  }
+
+  .music-dna__summary-tags {
+    gap: 5px;
+  }
+
+  .music-dna__summary-tags span {
+    font-size: 7px;
+  }
+
+  .music-dna__summary-score {
+    grid-column: 1 / -1;
+    grid-template-columns: auto 1fr;
+    justify-items: start;
+    align-items: center;
+    padding-top: 11px;
+    border-top: 1px solid rgba(232, 215, 255, 0.08);
+  }
+
+  .music-dna__summary-score .music-dna__ring {
+    width: 49px;
+    height: 49px;
+  }
+
+  .music-dna__summary-score .music-dna__ring > div {
+    width: 40px;
+    height: 40px;
+  }
+
+  .music-dna__summary-score .music-dna__ring strong {
+    font-size: 13px;
+  }
+
+  .music-dna__summary-score .music-dna__ring span {
+    display: none;
+  }
+
+  .music-dna__footer {
+    align-items: flex-start;
+    padding: 15px 2px 0;
+    font-size: 7px;
+  }
+
+  .music-dna__footer button {
+    font-size: 7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .music-dna *,
+  .music-dna *::before,
+  .music-dna *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

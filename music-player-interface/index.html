@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Music Player Interface - Modern Streaming Web App</title>
+  <meta name="description" content="A modern music streaming web application powered by Spotify Web API and Last.fm API." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%231db954'><polygon points='5 3 19 12 5 21 5 3'/></svg>" />
+  <script>
+    // Ensure origin consistency: if user opened localhost, normalize to 127.0.0.1
+    if (window.location.hostname === 'localhost') {
+      window.location.replace(window.location.href.replace('//localhost:', '//127.0.0.1:'));
+    }
+  </script>
+</head>
+<body class="dark-theme">
+  <div class="app-layout" id="app-root">
+    
+    <!-- Mobile Sidebar Backdrop Overlay -->
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <!-- SIDEBAR NAVIGATION -->
+    <aside class="app-sidebar" id="app-sidebar">
+      <div class="sidebar-header">
+        <a href="#home" class="brand-logo" data-view="home">
+          <div class="brand-equalizer">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <span class="brand-name">Music Player</span>
+        </a>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group-title">Menu</div>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#home" class="nav-link active" data-view="home">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+              <span>Home</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#search" class="nav-link" data-view="search">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <span>Search</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#trending" class="nav-link" data-view="trending">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+              <span>Trending Songs</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#artists" class="nav-link" data-view="artists">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+              <span>Artists</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#playlists" class="nav-link" data-view="playlists">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+              <span>Playlists</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#account" class="nav-link" data-view="account">
+              <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"></circle><path d="M5 21v-2a7 7 0 0 1 14 0v2"></path></svg>
+              <span>Account</span>
+            </a>
+          </li>
+        </ul>
+
+        <div class="nav-group-title">
+          <span>Your Library</span>
+          <button class="icon-btn-add" id="sidebar-add-playlist-btn" title="Create Playlist" aria-label="Create Playlist">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+          </button>
+        </div>
+        <div class="sidebar-playlists" id="sidebar-playlists-list">
+          <!-- Dynamically populated playlists -->
+        </div>
+      </nav>
+
+      <li class="nav-item">
+  <a href="#focus" class="nav-link" data-view="focus">
+    <span class="nav-icon">◉</span>
+    <span>Focus Mode</span>
+  </a>
+</li>
+
+      <!-- Sidebar Footer Auth & Settings -->
+      <div class="sidebar-footer">
+        <div id="user-profile-badge">
+          <!-- Dynamically populated with Connect button or user profile -->
+        </div>
+        <button class="sidebar-settings-link" id="settings-btn" title="API Settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+          <span>API & Config Settings</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN APP AREA -->
+    <div class="app-main">
+      <!-- TOP NAVIGATION BAR -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          </button>
+          
+          <!-- Global Search Bar -->
+          <div class="global-search-container">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" id="global-search-input" class="global-search-input" placeholder="Search songs, artists, playlists..." autocomplete="off" />
+            <button class="search-clear-btn" id="search-clear-btn" title="Clear search">✕</button>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div id="local-account-status"></div>
+          <!-- Guest Spotify Banner -->
+          <div class="spotify-connect-banner" id="spotify-connect-banner">
+            <span>Connect Spotify to unlock full library & search</span>
+            <button class="btn btn-sm btn-spotify-connect" id="auth-action-btn">Connect</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- SCROLLABLE VIEW CONTAINER -->
+      <main class="main-content-scroll" id="main-content-scroll">
+        <div id="view-container">
+          <!-- Views injected by ui.js -->
+        </div>
+      </main>
+    </div>
+
+    <!-- BOTTOM FIXED MUSIC PLAYER -->
+    <footer class="app-player" id="app-player">
+      <!-- Left Track Info -->
+      <div class="player-left">
+        <div class="player-thumb-wrapper">
+          <img id="player-track-img" class="player-thumb" src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23222'><rect width='24' height='24'/></svg>" alt="Album art" />
+        </div>
+        <div class="player-metadata">
+          <div id="player-track-title" class="player-title">Select a track to play</div>
+          <div id="player-track-artist" class="player-artist">Music Player Interface</div>
+          <div class="player-status-line">
+            <span id="player-playback-badge" class="playback-badge external">Ready</span>
+          </div>
+        </div>
+        <button id="player-like-btn" class="icon-btn-like" title="Add to Liked Songs">🤍</button>
+        <a id="player-open-spotify-btn" class="icon-btn-spotify" href="#" target="_blank" rel="noopener noreferrer" title="Open on Spotify" style="display: none;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+          </svg>
+        </a>
+      </div>
+
+      <!-- Center Player Controls -->
+      <div class="player-center">
+        <div class="player-controls">
+          <button id="player-shuffle-btn" class="player-ctrl-btn" title="Shuffle">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="21" y2="3"></line><polyline points="21 16 21 21 16 21"></polyline><line x1="15" y1="15" x2="21" y2="21"></line><line x1="4" y1="4" x2="9" y2="9"></line></svg>
+          </button>
+          <button id="player-prev-btn" class="player-ctrl-btn" title="Previous">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="19 20 9 12 19 4 19 20"></polygon><line x1="5" y1="19" x2="5" y2="5" stroke="currentColor" stroke-width="3"></line></svg>
+          </button>
+          <button id="player-play-pause-btn" class="player-play-btn" title="Play">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+          </button>
+          <button id="player-next-btn" class="player-ctrl-btn" title="Next">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 4 15 12 5 20 5 4"></polygon><line x1="19" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="3"></line></svg>
+          </button>
+          <button id="player-repeat-btn" class="player-ctrl-btn" title="Repeat">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+          </button>
+        </div>
+
+        <div class="player-scrubber-row">
+          <span id="player-current-time" class="time-label">0:00</span>
+          <div class="scrubber-bar-container">
+            <input type="range" id="player-progress-bar" class="scrubber-range" min="0" max="100" value="0" step="0.1" />
+          </div>
+          <span id="player-duration" class="time-label">0:00</span>
+        </div>
+      </div>
+
+      <!-- Right Volume & Settings -->
+      <div class="player-right">
+        <button id="player-volume-btn" class="volume-btn" title="Mute/Unmute">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+        </button>
+        <div class="volume-slider-wrapper">
+          <input type="range" id="player-volume-slider" class="volume-range" min="0" max="100" value="75" />
+        </div>
+      </div>
+    </footer>
+
+    <!-- MODAL: PLAYBACK NOTICE & HONEST SPOTIFY INTEGRATION -->
+    <div class="modal-overlay" id="playback-notice-modal">
+      <div class="modal-card">
+        <button class="modal-close-btn" aria-label="Close modal">✕</button>
+        <div class="notice-header">
+          <div class="spotify-badge-large">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+            </svg>
+            <span id="notice-modal-title">Spotify Playback</span>
+          </div>
+        </div>
+
+        <div class="notice-track-card">
+          <img id="notice-track-img" class="notice-track-thumb" src="" alt="" />
+          <div class="notice-track-info">
+            <h4 id="notice-track-name" class="notice-track-title"></h4>
+            <span id="notice-track-artist" class="notice-track-artist"></span>
+          </div>
+        </div>
+
+        <div class="notice-explanation">
+          <p id="notice-modal-message">
+            This track could not be played in the website.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODAL: CREATE PLAYLIST -->
+    <div class="modal-overlay" id="create-playlist-modal">
+      <div class="modal-card">
+        <button class="modal-close-btn" aria-label="Close modal">✕</button>
+        <h3 class="modal-title">Create New Playlist</h3>
+        <p class="modal-subtitle">Give your playlist a title, description, and optional cover artwork.</p>
+        
+        <form id="create-playlist-form" class="modal-form">
+          <div class="form-group">
+            <label for="new-playlist-name">Playlist Name *</label>
+            <input type="text" id="new-playlist-name" class="input-field" placeholder="e.g. Midnight Beats" required />
+          </div>
+          <div class="form-group">
+            <label for="new-playlist-desc">Description</label>
+            <textarea id="new-playlist-desc" class="input-field" rows="2" placeholder="Describe your mix..."></textarea>
+          </div>
+          <div class="form-group">
+            <label for="new-playlist-cover">Cover Image URL (optional)</label>
+            <input type="url" id="new-playlist-cover" class="input-field" placeholder="https://..." />
+          </div>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary modal-close-btn">Cancel</button>
+            <button type="submit" class="btn btn-primary">Create</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- MODAL: ADD TO PLAYLIST -->
+    <div class="modal-overlay" id="add-to-playlist-modal">
+      <div class="modal-card">
+        <button class="modal-close-btn" aria-label="Close modal">✕</button>
+        <h3 class="modal-title">Add to Playlist</h3>
+        <p class="modal-subtitle">Choose which playlist to add this song to:</p>
+        <div class="add-playlist-list" id="add-playlist-list">
+          <!-- Populated by ui.js -->
+        </div>
+      </div>
+    </div>
+
+
+    <li class="nav-item">
+  <a href="#mood" class="nav-link" data-view="mood">
+    <span class="nav-icon">♫</span>
+    <span>Mood Music</span>
+  </a>
+</li>
+
+
+    <!-- MODAL: SETTINGS & API CONFIG -->
+    <div class="modal-overlay" id="settings-modal">
+      <div class="modal-card">
+        <button class="modal-close-btn" aria-label="Close modal">✕</button>
+        <h3 class="modal-title">API & Configuration</h3>
+        <p class="modal-subtitle">Configure Spotify OAuth. Last.fm is securely configured on the Django backend.</p>
+
+        <form id="settings-form" class="modal-form">
+          <div class="form-group">
+            <label for="settings-client-id">Spotify Client ID</label>
+            <input type="text" id="settings-client-id" class="input-field" value="b7fd3c1f2e0e4661afd54d4a46ad834c" />
+            <small class="form-help">Spotify Client ID for OAuth 2.0 PKCE authentication.</small>
+          </div>
+
+          <div class="form-group">
+            <label for="settings-redirect-uri">Spotify Redirect URI</label>
+            <input type="text" id="settings-redirect-uri" class="input-field" value="http://127.0.0.1:5173/callback" readonly />
+            <small class="form-help">Must match the Redirect URI in your Spotify Developer Dashboard exactly.</small>
+          </div>
+
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary modal-close-btn">Cancel</button>
+            <button type="submit" class="btn btn-primary">Save Settings</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- MODAL: SPOTIFY CONNECT -->
+    <div class="modal-overlay" id="spotify-connect-modal">
+      <div class="modal-card">
+        <button class="modal-close-btn" aria-label="Close modal">✕</button>
+        <div class="connect-modal-header" style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="#1db954">
+            <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/>
+          </svg>
+          <h3 class="modal-title" style="margin:0;">Connect Spotify</h3>
+        </div>
+        <p class="modal-subtitle">Link your Spotify account to enable search and library sync.</p>
+
+        <!-- Method 1: OAuth Login -->
+        <div class="connect-method-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:16px; margin-bottom:16px;">
+          <h4 style="font-size:0.95rem; margin-bottom:6px;">Method 1: One-Click Spotify OAuth (PKCE)</h4>
+          <p style="font-size:0.85rem; color:#a1a1aa; margin-bottom:12px;">Redirects to accounts.spotify.com to authorize access securely.</p>
+          <div style="font-size:0.8rem; color:#71717a; margin-bottom:12px;">
+            <span>Redirect URI:</span> <code id="connect-redirect-uri-display" style="background:rgba(255,255,255,0.1); padding:2px 6px; border-radius:4px; color:#e4e4e7;">http://127.0.0.1:5173/callback</code>
+          </div>
+          <button id="modal-oauth-login-btn" class="btn btn-spotify-connect btn-block" style="width:100%;">
+            🚀 Sign In with Spotify
+          </button>
+        </div>
+
+        <div style="text-align:center; color:#71717a; font-size:0.8rem; margin:14px 0;">— OR —</div>
+
+        <!-- Method 2: Direct Token -->
+        <div class="connect-method-card" style="background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:12px; padding:16px;">
+          <h4 style="font-size:0.95rem; margin-bottom:6px;">Method 2: Paste Spotify Token directly</h4>
+          <p style="font-size:0.85rem; color:#a1a1aa; margin-bottom:12px;">
+            Bypasses redirect URI / Developer Mode email restrictions.
+            <a href="https://developer.spotify.com/documentation/web-api" target="_blank" rel="noopener noreferrer" style="color:#1db954; text-decoration:underline;">Get Token from Spotify Console ↗</a>
+          </p>
+          <form id="direct-token-form" style="display:flex; flex-direction:column; gap:10px;">
+            <input type="text" id="direct-token-input" class="input-field" placeholder="Paste Spotify access token..." autocomplete="off" />
+            <button type="submit" class="btn btn-secondary btn-block" style="width:100%;">Connect with Token</button>
+          </form>
+        </div>
+
+        <div style="background:rgba(0,0,0,0.3); border:1px solid rgba(255,255,255,0.06); border-radius:10px; padding:12px; margin-top:16px; font-size:0.8rem; color:#a1a1aa;">
+          <strong style="color:#1db954; display:block; margin-bottom:4px;">🛠️ Spotify Dashboard Requirement:</strong>
+          In <a href="https://developer.spotify.com/dashboard" target="_blank" style="color:#1db954;">Spotify Developer Dashboard</a> > App > <strong>Settings</strong> > <strong>Redirect URIs</strong>, make sure <code>http://127.0.0.1:5173/callback</code> is added!
+        </div>
+      </div>
+    </div>
+
+    <!-- TOAST CONTAINER -->
+    <div id="toast-container" class="toast-container"></div>
+
+  </div>
+  <!-- SCRIPT ENTRY POINT -->
+  <script type="module" src="script.js"></script>
+</body>
+</html>

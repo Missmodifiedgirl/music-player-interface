@@ -1,0 +1,31 @@
+.music-language-select {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  color: #a1a0ad;
+  font-size: 0.8rem;
+}
+
+.music-language-select small {
+  flex-basis: 100%;
+  margin-left: 1px;
+  color: #777683;
+  font-size: 0.72rem;
+}
+
+.music-language-select select {
+  min-width: 132px;
+  min-height: 36px;
+  padding: 7px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px;
+  background: #181821;
+  color: #f3f1f7;
+  font: inherit;
+}
+
+.music-language-select select:focus-visible {
+  outline: 2px solid #8e7bea;
+  outline-offset: 2px;
+}

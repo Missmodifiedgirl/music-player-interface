@@ -1,0 +1,7 @@
+Music Player Django Backend
+
+Backend directory: backend\
+API base URL: http://127.0.0.1:8000/api/
+Admin URL: http://127.0.0.1:8000/admin/
+
+Important: run Django commands from the backend directory.

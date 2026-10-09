@@ -1,0 +1,1651 @@
+.modal-overlay.feature-mood-lift-overlay {
+  align-items: stretch;
+  padding: 0;
+  background: rgba(7, 8, 13, 0.97);
+}
+
+.modal-card.feature-mood-lift-dialog {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  max-height: none;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: #0a0b11;
+}
+
+.modal-card.feature-mood-lift-dialog > .modal-close-btn {
+  position: fixed;
+  z-index: 30;
+  top: 15px;
+  right: 22px;
+  display: grid;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border: 1px solid rgba(238, 225, 241, 0.16);
+  border-radius: 50%;
+  background: rgba(18, 18, 27, 0.9);
+  color: #f5eff8;
+  font-size: 24px;
+  backdrop-filter: blur(14px);
+}
+
+.react-feature-menu.is-mood-lift-open {
+  display: none;
+}
+
+.moodlift {
+  --lift-text: #f5f0f7;
+  --lift-muted: #a8a1b0;
+  --lift-faint: #767180;
+  --lift-line: rgba(230, 221, 239, 0.1);
+  --lift-panel: rgba(22, 23, 32, 0.82);
+  --lift-accent: #e7c87e;
+  position: relative;
+  height: 100%;
+  overflow: auto;
+  color: var(--lift-text);
+  background:
+    radial-gradient(ellipse at 74% 9%, color-mix(in srgb, var(--lift-accent) 10%, transparent), transparent 35%),
+    radial-gradient(ellipse at 6% 52%, rgba(116, 131, 181, 0.07), transparent 32%),
+    #0a0b11;
+  font-family: Inter, "Segoe UI", sans-serif;
+  scrollbar-color: rgba(215, 197, 170, 0.31) transparent;
+}
+
+.moodlift *,
+.moodlift *::before,
+.moodlift *::after {
+  box-sizing: border-box;
+}
+
+.moodlift button,
+.moodlift input,
+.moodlift textarea,
+.moodlift select {
+  font: inherit;
+}
+
+.moodlift button:focus-visible,
+.moodlift input:focus-visible,
+.moodlift textarea:focus-visible,
+.moodlift select:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--lift-accent) 75%, white);
+  outline-offset: 3px;
+}
+
+.moodlift__topbar,
+.moodlift__hero,
+.moodlift__checkin-content,
+.moodlift__footer,
+.moodlift__experience,
+.moodlift__complete {
+  width: min(1180px, calc(100% - 72px));
+  margin-inline: auto;
+}
+
+.moodlift__topbar {
+  display: flex;
+  min-height: 66px;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--lift-line);
+}
+
+.moodlift__brand {
+  display: flex;
+  align-items: center;
+  color: #f6f0f9;
+  font-size: 15px;
+  font-weight: 740;
+  letter-spacing: -0.5px;
+}
+
+.moodlift__brand > span:first-child {
+  display: grid;
+  width: 25px;
+  height: 25px;
+  margin-right: 8px;
+  place-items: center;
+  border-radius: 8px;
+  background: linear-gradient(145deg, #d6aeed, #efc786);
+  color: #1b1820;
+  font-size: 18px;
+  font-weight: 850;
+}
+
+.moodlift__brand > span:last-child {
+  color: var(--lift-accent);
+}
+
+.moodlift__brand-note,
+.moodlift__privacy,
+.moodlift__eyebrow,
+.moodlift__section-heading > span {
+  color: #a79cae;
+  font-size: 8px;
+  font-weight: 740;
+  letter-spacing: 1.3px;
+}
+
+.moodlift__privacy {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-right: 52px;
+  font-size: 7px;
+}
+
+.moodlift__privacy i,
+.moodlift__playing-banner::before {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #98d6b5;
+  box-shadow: 0 0 9px rgba(152, 214, 181, 0.48);
+}
+
+.moodlift__hero {
+  display: grid;
+  min-height: 235px;
+  grid-template-columns: 1fr 0.7fr;
+  align-items: center;
+  border-bottom: 1px solid var(--lift-line);
+}
+
+.moodlift__hero-copy {
+  padding: 25px 0;
+}
+
+.moodlift__eyebrow {
+  display: block;
+  color: color-mix(in srgb, var(--lift-accent) 78%, #fff);
+}
+
+.moodlift__hero h1 {
+  margin: 10px 0 6px;
+  font-size: clamp(35px, 4.8vw, 53px);
+  font-weight: 590;
+  letter-spacing: -3px;
+  line-height: 1.07;
+}
+
+.moodlift__hero h1 > span {
+  color: var(--lift-accent);
+}
+
+.moodlift__hero-copy > p {
+  margin: 0;
+  color: var(--lift-muted);
+  font-size: 13px;
+}
+
+.moodlift__hero-foot {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 17px;
+  color: #9f98a7;
+  font-size: 8px;
+}
+
+.moodlift__hero-foot > span {
+  color: var(--lift-accent);
+}
+
+.moodlift__hero-art {
+  position: relative;
+  display: grid;
+  min-height: 197px;
+  place-items: center;
+  overflow: hidden;
+}
+
+.moodlift__sun {
+  position: relative;
+  display: grid;
+  width: 140px;
+  height: 140px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--lift-accent) 28%, transparent);
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--lift-accent) 19%, transparent), transparent 68%);
+  box-shadow: 0 0 65px color-mix(in srgb, var(--lift-accent) 12%, transparent);
+  animation: lift-breathe 5s ease-in-out infinite;
+}
+
+.moodlift__sun::before,
+.moodlift__sun::after {
+  position: absolute;
+  inset: 13px;
+  border: 1px solid color-mix(in srgb, var(--lift-accent) 22%, transparent);
+  border-radius: 50%;
+  content: "";
+}
+
+.moodlift__sun::after {
+  inset: -12px;
+  border-style: dashed;
+  opacity: 0.55;
+  animation: lift-orbit 32s linear infinite;
+}
+
+.moodlift__sun > i {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  border: 1px solid rgba(255, 236, 192, 0.31);
+  border-radius: 50%;
+  background: radial-gradient(circle at 37% 32%, #fff0c3, #eac77f 55%, #b78870);
+  box-shadow: 0 0 30px color-mix(in srgb, var(--lift-accent) 45%, transparent);
+}
+
+.moodlift__sun > b {
+  z-index: 1;
+  color: #312a2a;
+  font-size: 19px;
+  font-weight: 500;
+}
+
+.moodlift__hero-art > span,
+.moodlift__hero-art > em {
+  position: absolute;
+  color: var(--lift-accent);
+  font-size: 21px;
+  font-style: normal;
+  text-shadow: 0 0 15px color-mix(in srgb, var(--lift-accent) 40%, transparent);
+}
+
+.moodlift__hero-art > span {
+  top: 28px;
+  left: 21%;
+}
+
+.moodlift__hero-art > em {
+  right: 19%;
+  bottom: 23px;
+  color: #d89fbd;
+  font-size: 16px;
+}
+
+.moodlift__checkin-content {
+  padding-top: 17px;
+}
+
+.moodlift__section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.moodlift__section-heading small {
+  color: var(--lift-faint);
+  font-size: 8px;
+}
+
+.moodlift__mood-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 11px;
+}
+
+.moodlift__mood-card {
+  display: flex;
+  min-height: 61px;
+  align-items: center;
+  gap: 9px;
+  padding: 9px 10px;
+  border: 1px solid rgba(229, 221, 238, 0.1);
+  border-radius: 12px;
+  background: rgba(23, 24, 33, 0.7);
+  color: var(--lift-text);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 150ms ease, border-color 150ms ease, background 150ms ease;
+}
+
+.moodlift__mood-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--mood-tint) 50%, transparent);
+}
+
+.moodlift__mood-card.is-selected {
+  border-color: color-mix(in srgb, var(--mood-tint) 75%, transparent);
+  background: color-mix(in srgb, var(--mood-tint) 12%, #171821);
+  box-shadow: 0 0 19px color-mix(in srgb, var(--mood-tint) 9%, transparent);
+}
+
+.moodlift__mood-emoji {
+  display: grid;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--mood-tint) 19%, transparent);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--mood-tint) 10%, transparent);
+  font-size: 16px;
+}
+
+.moodlift__mood-card > b {
+  flex: 1;
+  font-size: 10px;
+  font-weight: 630;
+}
+
+.moodlift__mood-card > i {
+  color: var(--mood-tint);
+  font-size: 10px;
+  font-style: normal;
+}
+
+.moodlift__description {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-top: 13px;
+  color: #e2dce8;
+  font-size: 9px;
+}
+
+.moodlift__description > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.moodlift__description small {
+  padding: 3px 5px;
+  border: 1px solid rgba(230, 218, 237, 0.1);
+  border-radius: 7px;
+  color: #96909f;
+  font-size: 6px;
+  letter-spacing: 0.65px;
+}
+
+.moodlift__description textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 9px 10px;
+  resize: vertical;
+  border: 1px solid rgba(230, 220, 239, 0.11);
+  border-radius: 10px;
+  background: rgba(17, 18, 26, 0.76);
+  color: var(--lift-text);
+  font-size: 9px;
+}
+
+.moodlift__description textarea::placeholder {
+  color: #777280;
+}
+
+.moodlift__checkin-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0 19px;
+}
+
+.moodlift__checkin-actions > span {
+  color: #96909d;
+  font-size: 8px;
+}
+
+.moodlift__primary {
+  display: flex;
+  min-width: 135px;
+  min-height: 36px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 0 12px;
+  border: 1px solid color-mix(in srgb, var(--lift-accent) 47%, transparent);
+  border-radius: 9px;
+  background: linear-gradient(112deg, color-mix(in srgb, var(--lift-accent) 76%, #745e78), color-mix(in srgb, var(--lift-accent) 62%, #ad8a73));
+  color: #211b20;
+  font-size: 9px;
+  font-weight: 760;
+  cursor: pointer;
+  transition: transform 150ms ease, filter 150ms ease;
+}
+
+.moodlift__primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.08);
+}
+
+.moodlift__primary:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.moodlift__primary > i {
+  font-size: 14px;
+  font-style: normal;
+}
+
+.moodlift__error,
+.moodlift__notice {
+  margin: 9px 0 0;
+  color: #ffb5bf;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+.moodlift__notice {
+  color: #c5ddca;
+}
+
+.moodlift__footer {
+  display: flex;
+  min-height: 43px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border-top: 1px solid var(--lift-line);
+  color: #85808d;
+  font-size: 7px;
+  letter-spacing: 0.6px;
+}
+
+.moodlift__footer > span:last-child {
+  font-weight: 730;
+  letter-spacing: 1px;
+}
+
+.moodlift__footer i {
+  color: var(--lift-accent);
+  font-style: normal;
+}
+
+.moodlift__understanding {
+  display: grid;
+  min-height: calc(100% - 110px);
+  place-items: center;
+  padding: 25px;
+}
+
+.moodlift__thinking,
+.moodlift__understood-card {
+  width: min(470px, 100%);
+  text-align: center;
+  animation: lift-enter 440ms ease both;
+}
+
+.moodlift__thinking-orb {
+  position: relative;
+  display: grid;
+  width: 117px;
+  height: 117px;
+  margin: 0 auto 20px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--lift-accent) 29%, transparent);
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--lift-accent) 15%, transparent), transparent 68%);
+  box-shadow: 0 0 55px color-mix(in srgb, var(--lift-accent) 12%, transparent);
+  font-size: 34px;
+}
+
+.moodlift__thinking-orb > i,
+.moodlift__thinking-orb > b {
+  position: absolute;
+  inset: 8px;
+  border: 1px solid color-mix(in srgb, var(--lift-accent) 21%, transparent);
+  border-radius: 50%;
+  animation: lift-orbit 6s linear infinite;
+}
+
+.moodlift__thinking-orb > b {
+  inset: -7px;
+  border-style: dashed;
+  animation-direction: reverse;
+  animation-duration: 12s;
+}
+
+.moodlift__thinking h1,
+.moodlift__understood-card h1,
+.moodlift__complete h1 {
+  margin: 10px 0 6px;
+  font-size: clamp(27px, 3.5vw, 37px);
+  font-weight: 590;
+  letter-spacing: -1.5px;
+}
+
+.moodlift__thinking h1 > span,
+.moodlift__complete h1 > span {
+  color: var(--lift-accent);
+}
+
+.moodlift__thinking p,
+.moodlift__understood-card > p {
+  color: var(--lift-muted);
+  font-size: 10px;
+  line-height: 1.65;
+}
+
+.moodlift__understood-card {
+  padding: 25px;
+  border: 1px solid var(--lift-line);
+  border-radius: 19px;
+  background: linear-gradient(145deg, rgba(29, 28, 40, 0.84), rgba(17, 18, 25, 0.86));
+  box-shadow: 0 26px 90px rgba(0, 0, 0, 0.22);
+}
+
+.moodlift__selected-mood {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 9px;
+  margin: 12px 0 16px;
+}
+
+.moodlift__selected-mood > span {
+  display: grid;
+  width: 45px;
+  height: 45px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--mood-tint) 36%, transparent);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--mood-tint) 13%, transparent);
+  font-size: 22px;
+}
+
+.moodlift__selected-mood > b {
+  color: color-mix(in srgb, var(--mood-tint) 84%, white);
+  font-size: 15px;
+  font-weight: 620;
+}
+
+.moodlift__intensity {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 6px 10px;
+  margin: 0 auto 16px;
+  text-align: left;
+}
+
+.moodlift__intensity > span {
+  color: #cfc8d4;
+  font-size: 9px;
+}
+
+.moodlift__intensity > b {
+  color: var(--lift-accent);
+  font-size: 11px;
+}
+
+.moodlift__intensity > i {
+  grid-column: 1 / -1;
+  height: 4px;
+  overflow: hidden;
+  border-radius: 5px;
+  background: rgba(240, 229, 244, 0.11);
+}
+
+.moodlift__intensity > i > em {
+  display: block;
+  width: 72%;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--lift-accent) 54%, #829ed0), var(--lift-accent));
+}
+
+.moodlift__intensity > small {
+  grid-column: 1 / -1;
+  color: #898391;
+  font-size: 7px;
+}
+
+.moodlift__understood-card blockquote {
+  margin: 11px 0;
+  padding: 8px 10px;
+  border-left: 2px solid color-mix(in srgb, var(--lift-accent) 57%, transparent);
+  background: rgba(255, 255, 255, 0.025);
+  color: #cdc2d1;
+  font-size: 9px;
+  font-style: italic;
+  text-align: left;
+}
+
+.moodlift__understood-card > .moodlift__primary {
+  margin: 17px auto 0;
+}
+
+.moodlift__experience {
+  padding-top: 18px;
+}
+
+.moodlift__experience-heading {
+  text-align: center;
+}
+
+.moodlift__experience-heading h1 {
+  margin: 7px 0 4px;
+  font-size: clamp(25px, 3.4vw, 36px);
+  font-weight: 600;
+  letter-spacing: -1.7px;
+}
+
+.moodlift__experience-heading h1 > span {
+  color: var(--lift-accent);
+}
+
+.moodlift__experience-heading > p {
+  margin: 0;
+  color: var(--lift-muted);
+  font-size: 9px;
+}
+
+.moodlift__mood-path {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 11px;
+  margin-top: 9px;
+  color: #b7aebc;
+  font-size: 8px;
+}
+
+.moodlift__mood-path > i {
+  color: var(--lift-accent);
+  font-style: normal;
+}
+
+.moodlift__mood-path > b {
+  color: #e1d2b4;
+  font-weight: 600;
+}
+
+.moodlift__playing-banner {
+  position: relative;
+  display: flex;
+  min-height: 54px;
+  align-items: center;
+  gap: 12px;
+  margin-top: 13px;
+  padding: 8px 12px;
+  border: 1px solid color-mix(in srgb, var(--lift-accent) 21%, transparent);
+  border-radius: 12px;
+  background: linear-gradient(100deg, color-mix(in srgb, var(--lift-accent) 9%, #191923), rgba(22, 23, 31, 0.86));
+}
+
+.moodlift__playing-wave {
+  display: flex;
+  width: 30px;
+  height: 24px;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.moodlift__playing-wave i {
+  width: 2px;
+  height: 7px;
+  border-radius: 2px;
+  background: var(--lift-accent);
+  animation: lift-wave 0.8s ease-in-out infinite alternate;
+}
+
+.moodlift__playing-wave i:nth-child(3n) { animation-delay: -0.5s; }
+.moodlift__playing-wave i:nth-child(3n + 1) { animation-delay: -0.22s; }
+.moodlift__playing-wave i:nth-child(2n) { height: 12px; animation-duration: 0.62s; }
+
+.moodlift__playing-banner > div:nth-child(2) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.moodlift__playing-banner > div:nth-child(2) > b {
+  font-size: 9px;
+  font-weight: 690;
+}
+
+.moodlift__playing-banner > div:nth-child(2) > span {
+  color: var(--lift-muted);
+  font-size: 8px;
+}
+
+.moodlift__elapsed {
+  color: #b7adbd;
+  font-size: 8px;
+}
+
+.moodlift__player-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 235px;
+  align-items: start;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.moodlift__tracks {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.moodlift__stage {
+  padding: 10px 12px;
+  border: 1px solid var(--lift-line);
+  border-radius: 13px;
+  background: rgba(21, 22, 31, 0.74);
+}
+
+.moodlift__stage-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 0 7px;
+  border-bottom: 1px solid rgba(231, 219, 238, 0.07);
+}
+
+.moodlift__stage-heading > span {
+  display: grid;
+  width: 27px;
+  height: 27px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--lift-accent) 19%, transparent);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--lift-accent) 9%, transparent);
+  font-size: 13px;
+}
+
+.moodlift__stage-heading h2 {
+  margin: 0;
+  font-size: 9px;
+  font-weight: 640;
+}
+
+.moodlift__stage-heading small {
+  display: block;
+  margin-top: 3px;
+  color: var(--lift-muted);
+  font-size: 7px;
+}
+
+.moodlift__stage-heading > i {
+  height: 1px;
+  flex: 1;
+  margin-left: 6px;
+  background: linear-gradient(90deg, color-mix(in srgb, var(--lift-accent) 26%, transparent), transparent);
+}
+
+.moodlift__song-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.moodlift__song {
+  position: relative;
+  display: grid;
+  min-height: 53px;
+  grid-template-columns: 37px minmax(0, 1fr) auto 28px 28px;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 3px;
+  border-bottom: 1px solid rgba(231, 219, 238, 0.055);
+}
+
+.moodlift__song:last-child {
+  border-bottom: 0;
+}
+
+.moodlift__song.is-current {
+  background: color-mix(in srgb, var(--lift-accent) 6%, transparent);
+}
+
+.moodlift__song-cover {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 7px;
+  background: #302c39;
+  cursor: pointer;
+}
+
+.moodlift__song-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.moodlift__song-cover > span {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(5, 5, 9, 0.56);
+  color: white;
+  font-size: 11px;
+  opacity: 0;
+  transition: opacity 130ms ease;
+}
+
+.moodlift__song-cover:hover > span,
+.moodlift__song.is-current .moodlift__song-cover > span {
+  opacity: 1;
+}
+
+.moodlift__song-info {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.moodlift__song-info > b,
+.moodlift__song-info > small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.moodlift__song-info > b {
+  font-size: 8px;
+  font-weight: 650;
+}
+
+.moodlift__song-info > small {
+  color: #b6afbd;
+  font-size: 7px;
+}
+
+.moodlift__song-info > p {
+  overflow: hidden;
+  margin: 0;
+  color: #928a99;
+  font-size: 6px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.moodlift__now-playing-tag {
+  color: var(--lift-accent);
+  font-size: 6px;
+  font-weight: 780;
+  letter-spacing: 0.6px;
+}
+
+.moodlift__song-action {
+  display: grid;
+  width: 25px;
+  height: 25px;
+  place-items: center;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: transparent;
+  color: #b6aeba;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.moodlift__song-action:hover {
+  border-color: rgba(227, 213, 237, 0.13);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.moodlift__song-action.is-liked {
+  color: #ff9cbe;
+}
+
+.moodlift__add-wrap {
+  position: relative;
+}
+
+.moodlift__playlist-popover {
+  position: absolute;
+  z-index: 15;
+  top: 30px;
+  right: 0;
+  display: flex;
+  width: 174px;
+  flex-direction: column;
+  gap: 7px;
+  padding: 9px;
+  border: 1px solid rgba(225, 212, 237, 0.15);
+  border-radius: 9px;
+  background: #191821;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.42);
+}
+
+.moodlift__playlist-popover label {
+  color: #ded5e5;
+  font-size: 7px;
+}
+
+.moodlift__playlist-popover select,
+.moodlift__playlist-popover option {
+  color: #ece6f0;
+  background: #171620;
+}
+
+.moodlift__playlist-popover select {
+  min-height: 26px;
+  border: 1px solid rgba(222, 210, 236, 0.12);
+  border-radius: 6px;
+  font-size: 7px;
+}
+
+.moodlift__playlist-popover small {
+  color: var(--lift-muted);
+  font-size: 7px;
+}
+
+.moodlift__song-progress {
+  position: absolute;
+  right: 39px;
+  bottom: 2px;
+  left: 47px;
+  height: 2px;
+  overflow: hidden;
+  background: rgba(244, 231, 240, 0.1);
+}
+
+.moodlift__song-progress > i {
+  display: block;
+  height: 100%;
+  background: var(--lift-accent);
+}
+
+.moodlift__now-card {
+  position: sticky;
+  top: 12px;
+  padding: 12px;
+  border: 1px solid color-mix(in srgb, var(--lift-accent) 19%, transparent);
+  border-radius: 14px;
+  background: linear-gradient(150deg, color-mix(in srgb, var(--lift-accent) 6%, #20202b), rgba(20, 21, 30, 0.96));
+  text-align: center;
+}
+
+.moodlift__now-card > .moodlift__eyebrow {
+  text-align: left;
+  font-size: 6px;
+}
+
+.moodlift__album-art {
+  position: relative;
+  display: grid;
+  width: min(172px, 100%);
+  aspect-ratio: 1;
+  margin: 11px auto;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid rgba(255, 245, 228, 0.15);
+  border-radius: 11px;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--lift-accent) 54%, #615679), #765e7c 60%, #c791a5);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.37), 0 0 30px color-mix(in srgb, var(--lift-accent) 10%, transparent);
+  color: #fff5e5;
+  font-size: 47px;
+}
+
+.moodlift__album-art > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.moodlift__album-art > i {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.12), transparent 37%, transparent 73%, rgba(255, 255, 255, 0.04));
+}
+
+.moodlift__now-label {
+  color: color-mix(in srgb, var(--lift-accent) 75%, white);
+  font-size: 6px;
+  font-weight: 760;
+  letter-spacing: 0.8px;
+}
+
+.moodlift__now-card > h2 {
+  overflow: hidden;
+  margin: 5px 0 3px;
+  font-size: 11px;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.moodlift__now-card > p {
+  overflow: hidden;
+  margin: 0;
+  color: var(--lift-muted);
+  font-size: 8px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.moodlift__progress {
+  height: 3px;
+  margin-top: 11px;
+  overflow: hidden;
+  border-radius: 4px;
+  background: rgba(240, 228, 240, 0.12);
+}
+
+.moodlift__progress > i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--lift-accent);
+}
+
+.moodlift__play-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 17px;
+  margin-top: 10px;
+}
+
+.moodlift__play-controls button {
+  display: grid;
+  width: 26px;
+  height: 26px;
+  place-items: center;
+  border: 0;
+  background: transparent;
+  color: #e5dce9;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.moodlift__play-controls .moodlift__play-button {
+  width: 35px;
+  height: 35px;
+  border: 1px solid color-mix(in srgb, var(--lift-accent) 42%, transparent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--lift-accent) 17%, #28232c);
+  font-size: 12px;
+}
+
+.moodlift__play-options {
+  display: flex;
+  justify-content: space-between;
+  gap: 4px;
+  margin-top: 7px;
+  padding-top: 8px;
+  border-top: 1px solid var(--lift-line);
+}
+
+.moodlift__play-options button {
+  padding: 3px 4px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #bdb4c3;
+  font-size: 7px;
+  cursor: pointer;
+}
+
+.moodlift__play-options button[aria-pressed="true"] {
+  color: var(--lift-accent);
+}
+
+.moodlift__save-playlist {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--lift-line);
+  text-align: left;
+}
+
+.moodlift__save-playlist label {
+  color: var(--lift-muted);
+  font-size: 7px;
+}
+
+.moodlift__save-playlist select,
+.moodlift__save-playlist option {
+  color: #e8e1ed;
+  background: #171620;
+}
+
+.moodlift__save-playlist select {
+  min-width: 0;
+  flex: 1;
+  min-height: 25px;
+  border: 1px solid rgba(223, 212, 235, 0.11);
+  border-radius: 6px;
+  font-size: 7px;
+}
+
+.moodlift__save-playlist p {
+  width: 100%;
+  margin: 1px 0;
+  color: #b8d9c0;
+  font-size: 7px;
+  line-height: 1.4;
+}
+
+.moodlift__save-button {
+  width: 100%;
+  min-height: 28px;
+  border: 1px solid color-mix(in srgb, var(--lift-accent) 30%, transparent);
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--lift-accent) 8%, #22212a);
+  color: #e8d9bc;
+  font-size: 7px;
+  cursor: pointer;
+}
+
+.moodlift__save-button:disabled {
+  color: #a8d5b3;
+}
+
+.moodlift__adaptation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 11px 0 14px;
+  padding: 11px 13px;
+  border: 1px solid color-mix(in srgb, var(--lift-accent) 21%, transparent);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--lift-accent) 5%, #171821);
+  animation: lift-enter 300ms ease both;
+}
+
+.moodlift__adaptation h2 {
+  margin: 4px 0 0;
+  font-size: 11px;
+  font-weight: 620;
+}
+
+.moodlift__adaptation-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.moodlift__adaptation-options button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-height: 29px;
+  padding: 0 8px;
+  border: 1px solid rgba(227, 216, 237, 0.12);
+  border-radius: 15px;
+  background: rgba(12, 13, 20, 0.54);
+  color: #e1d9e7;
+  font-size: 8px;
+  cursor: pointer;
+}
+
+.moodlift__adaptation-options button > span {
+  font-size: 7px;
+}
+
+.moodlift__adaptation-options button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+
+.moodlift__adaptation-options .moodlift__skip-checkin {
+  border: 0;
+  background: transparent;
+  color: #a69dac;
+}
+
+.moodlift__finish-link {
+  display: block;
+  margin: 10px auto 15px;
+  padding: 7px 10px;
+  border: 1px solid rgba(224, 211, 233, 0.12);
+  border-radius: 15px;
+  background: rgba(20, 20, 28, 0.8);
+  color: #d8c5a3;
+  font-size: 8px;
+  cursor: pointer;
+}
+
+.moodlift__complete {
+  display: flex;
+  min-height: calc(100% - 110px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 0;
+  text-align: center;
+  animation: lift-enter 450ms ease both;
+}
+
+.moodlift__complete-sun {
+  display: grid;
+  width: 57px;
+  height: 57px;
+  margin-bottom: 14px;
+  place-items: center;
+  border: 1px solid color-mix(in srgb, var(--lift-accent) 34%, transparent);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--lift-accent) 11%, transparent);
+  box-shadow: 0 0 47px color-mix(in srgb, var(--lift-accent) 17%, transparent);
+  color: var(--lift-accent);
+  font-size: 24px;
+  animation: lift-breathe 4s ease-in-out infinite;
+}
+
+.moodlift__complete h1 {
+  margin: 9px 0 4px;
+}
+
+.moodlift__complete-message {
+  margin: 0;
+  color: var(--lift-muted);
+  font-size: 10px;
+}
+
+.moodlift__recap {
+  display: grid;
+  width: min(580px, 100%);
+  grid-template-columns: 1fr auto 1fr;
+  gap: 13px 18px;
+  align-items: center;
+  margin-top: 22px;
+  padding: 17px;
+  border: 1px solid var(--lift-line);
+  border-radius: 15px;
+  background: rgba(23, 24, 33, 0.78);
+}
+
+.moodlift__recap > div {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.moodlift__recap > span {
+  color: var(--lift-accent);
+}
+
+.moodlift__recap small {
+  color: #9d95a4;
+  font-size: 7px;
+  letter-spacing: 0.7px;
+}
+
+.moodlift__recap b {
+  font-size: 12px;
+  font-weight: 650;
+}
+
+.moodlift__complete-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 17px;
+}
+
+.moodlift__complete-actions .moodlift__primary {
+  justify-content: center;
+}
+
+.moodlift__secondary,
+.moodlift__done {
+  min-height: 36px;
+  padding: 0 13px;
+  border: 1px solid rgba(228, 215, 237, 0.14);
+  border-radius: 9px;
+  background: rgba(24, 24, 33, 0.75);
+  color: #e3dae9;
+  font-size: 8px;
+  cursor: pointer;
+}
+
+.moodlift__secondary:disabled {
+  color: #abd6b6;
+}
+
+.moodlift__done {
+  border-color: transparent;
+  background: transparent;
+  color: #a79dab;
+}
+
+.moodlift__complete-note {
+  margin-top: 13px;
+  color: #817b89;
+  font-size: 7px;
+}
+
+@keyframes lift-orbit {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes lift-breathe {
+  50% { transform: scale(1.035); }
+}
+
+@keyframes lift-wave {
+  to { height: 18px; opacity: 0.65; }
+}
+
+@keyframes lift-enter {
+  from { opacity: 0; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 850px) {
+  .moodlift__mood-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .moodlift__player-layout {
+    grid-template-columns: minmax(0, 1fr) 205px;
+  }
+
+  .moodlift__adaptation {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .moodlift__adaptation-options {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 620px) {
+  .moodlift__topbar,
+  .moodlift__hero,
+  .moodlift__checkin-content,
+  .moodlift__footer,
+  .moodlift__experience,
+  .moodlift__complete {
+    width: calc(100% - 34px);
+  }
+
+  .modal-card.feature-mood-lift-dialog > .modal-close-btn {
+    top: 9px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .moodlift__topbar {
+    min-height: 56px;
+  }
+
+  .moodlift__brand-note {
+    display: none;
+  }
+
+  .moodlift__privacy {
+    margin-right: 38px;
+    font-size: 6px;
+  }
+
+  .moodlift__hero {
+    min-height: 166px;
+    grid-template-columns: 1fr 106px;
+  }
+
+  .moodlift__hero h1 {
+    font-size: 31px;
+    letter-spacing: -1.8px;
+  }
+
+  .moodlift__hero-copy > p {
+    max-width: 250px;
+    font-size: 10px;
+  }
+
+  .moodlift__hero-foot {
+    max-width: 250px;
+    font-size: 7px;
+    line-height: 1.4;
+  }
+
+  .moodlift__hero-art {
+    min-height: 139px;
+  }
+
+  .moodlift__sun {
+    width: 94px;
+    height: 94px;
+  }
+
+  .moodlift__sun > i {
+    width: 39px;
+    height: 39px;
+  }
+
+  .moodlift__sun > b {
+    font-size: 15px;
+  }
+
+  .moodlift__checkin-content {
+    padding-top: 13px;
+  }
+
+  .moodlift__mood-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+  }
+
+  .moodlift__mood-card {
+    min-height: 52px;
+    padding: 7px;
+  }
+
+  .moodlift__mood-emoji {
+    width: 29px;
+    height: 29px;
+  }
+
+  .moodlift__mood-card > b {
+    font-size: 9px;
+  }
+
+  .moodlift__checkin-actions {
+    padding-bottom: 13px;
+  }
+
+  .moodlift__understanding {
+    min-height: calc(100% - 100px);
+    padding: 15px;
+  }
+
+  .moodlift__understood-card {
+    padding: 18px 15px;
+  }
+
+  .moodlift__experience {
+    padding-top: 15px;
+  }
+
+  .moodlift__experience-heading h1 {
+    font-size: 25px;
+  }
+
+  .moodlift__mood-path {
+    flex-wrap: wrap;
+  }
+
+  .moodlift__playing-banner {
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .moodlift__elapsed {
+    font-size: 7px;
+    white-space: nowrap;
+  }
+
+  .moodlift__player-layout {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .moodlift__now-card {
+    position: static;
+    display: grid;
+    grid-template-columns: 67px minmax(0, 1fr);
+    align-items: center;
+    column-gap: 10px;
+    text-align: left;
+  }
+
+  .moodlift__now-card > .moodlift__eyebrow {
+    grid-column: 1 / -1;
+    margin-bottom: 7px;
+  }
+
+  .moodlift__album-art {
+    grid-row: span 4;
+    width: 67px;
+    margin: 0;
+    border-radius: 8px;
+    font-size: 23px;
+  }
+
+  .moodlift__now-label {
+    align-self: end;
+    font-size: 6px;
+  }
+
+  .moodlift__now-card > h2 {
+    margin: 1px 0;
+    font-size: 10px;
+  }
+
+  .moodlift__progress {
+    grid-column: 2;
+    margin-top: 4px;
+  }
+
+  .moodlift__play-controls {
+    grid-column: 2;
+    justify-content: flex-start;
+    gap: 9px;
+    margin-top: 2px;
+  }
+
+  .moodlift__play-controls button {
+    width: 21px;
+    height: 22px;
+    font-size: 11px;
+  }
+
+  .moodlift__play-controls .moodlift__play-button {
+    width: 26px;
+    height: 26px;
+  }
+
+  .moodlift__play-options,
+  .moodlift__save-playlist {
+    grid-column: 1 / -1;
+  }
+
+  .moodlift__song {
+    grid-template-columns: 34px minmax(0, 1fr) auto 23px 23px;
+    gap: 5px;
+  }
+
+  .moodlift__song-cover {
+    width: 33px;
+    height: 33px;
+  }
+
+  .moodlift__song-info > p {
+    max-width: 190px;
+  }
+
+  .moodlift__adaptation {
+    padding: 10px;
+  }
+
+  .moodlift__adaptation-options {
+    gap: 5px;
+  }
+
+  .moodlift__adaptation-options button {
+    min-height: 27px;
+    padding: 0 7px;
+    font-size: 7px;
+  }
+
+  .moodlift__footer {
+    font-size: 6px;
+    letter-spacing: 0.3px;
+  }
+
+  .moodlift__complete {
+    min-height: calc(100% - 100px);
+  }
+
+  .moodlift__complete h1 {
+    font-size: 27px;
+  }
+
+  .moodlift__recap {
+    gap: 10px;
+    padding: 13px 9px;
+  }
+
+  .moodlift__recap b {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 370px) {
+  .moodlift__hero {
+    grid-template-columns: 1fr 77px;
+  }
+
+  .moodlift__hero h1 {
+    font-size: 27px;
+  }
+
+  .moodlift__sun {
+    width: 75px;
+    height: 75px;
+  }
+
+  .moodlift__sun > i {
+    width: 31px;
+    height: 31px;
+  }
+
+  .moodlift__song-info > p {
+    max-width: 150px;
+  }
+
+  .moodlift__now-playing-tag {
+    display: none;
+  }
+
+  .moodlift__complete-actions {
+    gap: 5px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .moodlift *,
+  .moodlift *::before,
+  .moodlift *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
